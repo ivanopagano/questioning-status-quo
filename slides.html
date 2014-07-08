@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Questioning the Status Quo</title>
+  <link rel="stylesheet" href="css/reveal.min.css">
+  <link rel="stylesheet" href="css/theme/sky.css" id="theme">
+  <!-- For syntax highlighting -->
+  <link rel="stylesheet" href="lib/css/zenburn.css">
+
+  <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+  <script>
+  if( window.location.search.match( /print-pdf/gi ) ) {
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = 'css/print/pdf.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  }
+  </script>
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="reveal">
+
+      <div class="slides">
+        <section id="title">
+          <h1>Questioning the Status Quo</h1>
+          <h3>of Java, OOP and beyond</h3>
+        </section>
+
+        <section id="whoami">
+          <h2>Who am I?</h2>
+          <p class="fragment roll-in">A programmer just like you</p>
+          <p class="fragment roll-in">... probably less smart than you, actually</p>
+        </section>
+
+        <section id="goals">
+          <section id="goals1">
+            <h2>What will you get out of this talk?</h2>
+          </section>
+          <section id="goals2">
+            <p>What will you get out of this talk?</p>
+            <h3>Some food for thought and brain teasing</h3>
+          </section>
+          <section id="goals3">
+            <p>What will you get out of this talk?</p>
+            <h3>A pretty cool list of future readings</h3>
+          </section>
+          <section id="goals4">
+            <p>What will you get out of this talk?</p>
+            <h3>Things you didn't know</h3>
+            <h3 class="fragment roll-in">Things you already knew</h3>
+            <h3 class="fragment roll-in">Things you didn't care to know</h3>
+          </section>
+          <section id="goals5">
+            <p>What will you get out of this talk?</p>
+            <h3>Bonus <emp>Scala</emp> and <emp>FP</emp> promotion!</h3>
+          </section>
+        </section>
+
+        <section id="first-time">
+          <section id="first-time0">
+            <h2>Let's try to get in the right mood</h2>
+          </section>
+          <section id="first-time1">
+            <h2>Think about your first steps in programming...</h2>
+          </section>
+          <section id="first-time2">
+            <h2>You probably felt excited, curious and every bit of script that worked was so satisfying!</h2>
+          </section>
+          <section id="first-time3">
+            <h2>Even if you've been forced to learn programming as schoolwork, you probably got addicted to it
+              sooner or later</h2>
+              <p class="fragment rool-in">...otherwise you wouldn't be here today, listening to this talk</p>
+            </section>
+            <section id="first-time4">
+              <h2>It can happen though, that such passion fades in the background, trampled by daily chores</h2>
+            </section>
+            <section id="first-time5">
+              <h2>We should strive to try and keep caring for what we do, and keep alive that initial spark of passion for this activity</h2>
+            </section>
+          </section>
+
+          <section id="dev-in-decade">
+            <h3><blockquote cite="http://www.slideshare.net/Codemotion/developing-in-a-decade">
+              &ldquo;As Developers, as an Industry, we have the potential to create a better society&rdquo;
+            </blockquote></h3>
+            <p>Hadid Hariri from <span class="emp">jetbrains</span> - Codemotion Rome 2014</p>
+            <p><small>slides available here <a href="http://www.slideshare.net/Codemotion/developing-in-a-decade">www.slideshare.net/Codemotion/developing-in-a-decade</a></small></p>
+          </section>
+
+          <section id="lost">
+            <h2 style="float: left;">Where did I get lost?</h2>
+            <img src="img/stitch.jpg" style="width: 400px; float: right;" alt="lost">
+          </section>
+
+          <section id="losing-it">
+            <h3 class="fragment roll-in" style="-webkit-transform: translate(-10ex) rotate(-6deg);">a daily routine</h3>
+            <h3 class="fragment roll-in" style="-webkit-transform: translate(12ex) rotate(23deg);">messy enterprisey code</h3>
+            <h3 class="fragment roll-in" style="-webkit-transform: translate(-10ex) rotate(-4deg);">bugs, code smells, over-complexity, imperfections</h3>
+            <h3 class="fragment roll-in" style="-webkit-transform: translate(5ex, 2ex) rotate(12deg);">sophisticated solutions to problems...</h3>
+            <h3 class="fragment roll-in" style="-webkit-transform: translate(5ex, 2ex) rotate(12deg);">... needed to solve the industry needs</h3>
+            <h3 class="fragment roll-in" style="-webkit-transform: translate(-5ex, 4ex) rotate(-6deg);">like faster time to market and tight delivery schedules</h3>
+          </section>
+
+          <section id="agile">
+            <h3>A whole <em>Agile</em> movement was born to adapt to and overcome some of this issues</h3>
+            <small class="fragment roll-in">As a personal note, I recommend to take a look at the idea underlying agile, forgetting about costly certifications and easy promises</small>
+          </section>
+        </div>
+
+      </div>
+      <script src="lib/js/head.min.js"></script>
+      <script src="js/reveal.min.js"></script>
+
+      <script>
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Parallax scrolling
+        // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+        // parallaxBackgroundSize: '2100px 900px',
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+        { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+        { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+        { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+        { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+        { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+        { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
+
+</script>
+
+</body>
+</html>
