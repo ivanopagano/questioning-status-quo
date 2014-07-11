@@ -48,7 +48,7 @@
           </section>
           <section id="goals3">
             <p>What will you get out of this talk?</p>
-            <h3>A pretty cool list of future readings and video references</h3>
+            <h3>A pretty cool list of future readings</h3>
           </section>
           <section id="goals4">
             <p>What will you get out of this talk?</p>
@@ -67,21 +67,21 @@
             <h2>Let's try to get in the right mood</h2>
           </section>
           <section id="first-time1">
-            <h3>Think about your first steps in programming...</h3>
+            <p>Think about your first steps in programming...</p>
           </section>
           <section id="first-time2">
-            <h3>You probably felt excited, curious and every bit of script that worked was so satisfying!</h3>
+            <p>You probably felt excited, curious and every bit of script that worked was so satisfying!</p>
           </section>
           <section id="first-time3">
-            <h3>Even if you've been forced to learn programming as schoolwork, you probably got addicted to it
-              sooner or later</h3>
+            <p>Even if you've been forced to learn programming as schoolwork, you probably got addicted to it
+              sooner or later</p>
               <p class="fragment rool-in">...otherwise you wouldn't be here today, listening to this talk</p>
             </section>
             <section id="first-time4">
-              <h3>It can happen though, that such passion fades in the background, trampled by daily chores</h3>
+              <p>It can happen though, that such passion fades in the background, trampled by daily chores</p>
             </section>
             <section id="first-time5">
-              <h3>We should strive to try and keep caring for what we do, and keep alive that initial spark of passion for this activity</h3>
+              <p>We should strive to try and keep caring for what we do, and keep alive that initial spark of passion for this activity</p>
             </section>
           </section>
 
@@ -91,6 +91,7 @@
             </blockquote></h3>
             <p>Hadid Hariri from <span class="emp">jetbrains</span> - Codemotion Rome 2014</p>
             <p><small>slides available here <a href="http://www.slideshare.net/Codemotion/developing-in-a-decade">www.slideshare.net/Codemotion/developing-in-a-decade</a></small></p>
+            <p class="fragment roll-in">Do you still care?</p>
           </section>
 
           <section id="lost">
@@ -108,8 +109,291 @@
           </section>
 
           <section id="agile">
-            <h3>The whole <em>Agile</em> movement was born to adapt to and overcome some of this issues</h3>
+            <h3>A whole <em>Agile</em> movement was born to adapt to and overcome some of this issues</h3>
             <small class="fragment roll-in">As a personal note, I recommend to take a look at the idea underlying agile, forgetting about costly certifications and easy promises</small>
+          </section>
+
+          <section>
+            <section id="code-samples">
+              <p>Let's take a look at some code</p>
+            </section>
+            <section id="code-samples1">
+              <p>code</p>
+              <pre><code data-trim>
+@Controller
+@RequestMapping("/hello-world")
+public class HelloWorldController {
+
+    private static final String template = "Hello, %s!";
+    private final AtomicLong counter = new AtomicLong();
+
+    @RequestMapping(method=RequestMethod.GET)
+    public @ResponseBody Greeting sayHello(
+                                    @RequestParam(value="name", 
+                                       required=false, 
+                                       defaultValue="Stranger") String name) {
+        return new Greeting(counter.incrementAndGet(), String.format(template, name));
+    }
+
+}              </code></pre>
+            </section>
+            <section id="code-samples2">
+              <p>code</p>
+              <pre><code data-trim>
+@Configuration
+@EnableAutoConfiguration
+@ComponentScan
+public class Application {
+
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
+    }
+
+}
+              </code></pre>
+              <p class="fragment roll-in">pretty terse... uh?</p>
+            </section>
+            <section id="code-samples3">
+              <p>configuration</p>
+              <pre><code data-trim>
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:context="http://www.springframework.org/schema/context"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+  
+  <context:annotation-config />
+  <context:property-placeholder />
+  
+  <bean id="helloService" class="sample.xml.service.HelloWorldService"></bean>
+  <bean id="application" class="sample.xml.SampleSpringXmlApplication"></bean>
+
+</beans>                
+              </code></pre>
+            </section>
+            <section id="code-samples4">
+              <p>build</p>
+              <pre><code data-trim>
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <!-- Your own application should inherit from spring-boot-starter-parent -->
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-samples</artifactId>
+    <version>1.2.0.BUILD-SNAPSHOT</version>
+  </parent>
+  <artifactId>spring-boot-sample-actuator</artifactId>
+  <name>Spring Boot Actuator Sample</name>
+  <description>Spring Boot Actuator Sample</description>
+  <url>http://projects.spring.io/spring-boot/</url>
+  <organization>
+    <name>Pivotal Software, Inc.</name>
+    <url>http://www.spring.io</url>
+  </organization>
+              </code></pre>
+            </section>
+            <section id="code-samples5">
+              <p>still build</p>
+              <pre><code data-trim>
+  <properties>
+    <main.basedir>${basedir}/../..</main.basedir>
+  </properties>
+  <dependencies>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-actuator</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-security</artifactId>
+    </dependency>
+              </code></pre>
+            </section>
+            <section id="code-samples6">
+              <p>you get the idea</p>
+              <pre><code data-trim>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-jdbc</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-remote-shell</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.h2database</groupId>
+      <artifactId>h2</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <scope>test</scope>
+    </dependency>
+              </code></pre>
+            </section>
+            <section id="code-samples7">
+              <p>still there?</p>
+              <pre><code data-trim>
+  </dependencies>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>
+</project>                
+              </code></pre>
+              <p class="fragment roll-in">well, this can get pretty verbose</p>
+            </section>
+          </section>
+          <section id="enterprise-code">
+            <p>"Traditional" enterprise code today looks just like that</p>
+            <span><img src="img/javaee.png" alt="javaee" height="160"></span>
+            <span><img src="img/springio.png" alt="spring.io" height="160"></span>
+            <span><img src="img/wildfly.png" alt="wildfly" height="160"></span>
+          </section>
+  
+          <section id="dare">
+            <h3>Do we dare try something different?</h3>
+          </section>
+
+          <section>
+            <section id="code-dare1">
+              <p>code</p>
+              <pre><code data-trim>
+public class Application extends Controller {
+
+    /** Display the login page or dashboard if connected */
+    public static Result index() {
+        String email = ctx().session().get("email");
+        if (email != null) {
+            User user = User.findByEmail(email);
+            if (user != null && user.validated) {
+                return GO_DASHBOARD;
+            } else {
+                Logger.debug("Clearing invalid session credentials");
+                session().clear();
+            }
+        }
+
+        return ok(index.render(form(Register.class), form(Login.class)));
+    }
+
+              </code></pre>
+            </section>
+            <section id="code-dare2">
+              <p>code</p>
+              <pre><code data-trim>
+public String validate() {
+    User user = null;
+    try {
+        user = User.authenticate(email, password);
+    } catch (AppException e) {
+        return Messages.get("error.technical");
+    }
+    if (user == null) {
+        return Messages.get("invalid.user.or.password");
+    } else if (!user.validated) {
+        return Messages.get("account.not.validated.check.mail");
+    }
+    return null;
+}
+</code></pre>
+            </section>
+            <section id="code-dare3">
+              <p>application.conf</p>
+              <pre><code data-trim>
+# Database configuration
+# ~~~~~ 
+# You can declare as many datasources as you want.
+# By convention, the default datasource is named `default`
+#
+db.default.driver=org.h2.Driver
+db.default.url="jdbc:h2:mem:play"
+
+#
+# You can expose this datasource via JNDI if needed (Useful for JPA)
+# db.default.jndiName=DefaultDS
+
+# Root logger:
+logger.root=WARN
+
+# Logger used by the framework:
+logger.play=INFO
+</code></pre>
+            </section>
+            <section id="code-dare4">
+              <p>routes.conf</p>
+              <pre><code data-trim>
+# Home page
+GET     /                    controllers.Application.index()
+GET     /dashboard           controllers.Dashboard.index()
+
+POST    /login               controllers.Application.authenticate()
+GET     /logout              controllers.Application.logout()
+
+GET     /settings            controllers.account.settings.Index.index()
+GET     /settings/password   controllers.account.settings.Password.index()
+POST    /settings/password   controllers.account.settings.Password.runPassword()
+GET     /settings/email      controllers.account.settings.Email.index()
+POST    /settings/email      controllers.account.settings.Email.runEmail()
+
+...
+              </code></pre>
+            </section>
+            <section id="code-dare5">
+              <p>build.sbt</p>
+              <pre><code data-trim>
+import sbt.Keys._
+
+name := "PlayStartApp"
+
+version := "1.0-SNAPSHOT"
+
+scalaVersion := "2.10.4"
+
+libraryDependencies ++= Seq(
+  jdbc,
+  javaEbean,
+  cache,
+  "org.mindrot" % "jbcrypt" % "0.3m",
+  "com.typesafe" %% "play-plugins-mailer" % "2.2.0",
+  filters
+)
+              </code></pre>
+            </section>
+            <section id="code-dare6">
+              <p>build.sbt / 2</p>
+              <pre><code data-trim>
+resolvers ++= Seq(
+    "Apache" at "http://repo1.maven.org/maven2/",
+    "jBCrypt Repository" at "http://repo1.maven.org/maven2/org/",
+    "Sonatype OSS Snasphots" at "http://oss.sonatype.org/content/repositories/snapshots"
+)
+
+lazy val root = (project in file(".")).enablePlugins(play.PlayJava)
+              </code></pre>
+            </section>
+          </section>
+
+          <section id="sowhat">
+            <h3>What am I trying to say?</h3>
+            <p class="fragment roll-in">I can get lost in technicalities</p>
+            <p class="fragment roll-in">Complex environments can blur the overall picture</p>
+            <p class="fragment roll-in">Every so often I should critically look at the tools I use</p>
+            <p class="fragment roll-in">Moreso if they result from some predetermined policy</p>
+            <p class="fragment roll-in">Find some time to explore new opportunities, they don't always pay back, but sometimes they do</p>
+            <p class="fragment roll-in">Don't be scared by the learning curve, you've been there already!</p>
           </section>
         </div>
 
