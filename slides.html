@@ -10,7 +10,7 @@
 
   <style>
 
-  code[data-trim] {
+  code[data-trim].small {
     font-size: 10pt;
   }
 
@@ -20,11 +20,14 @@
   }
 
   small.copyright {
-    
     font-size: 8pt;
     color: lightgrey;
+  }
 
-
+  .disco-light {
+    color: lightblue !important;
+    text-shadow: 1px 1px 20px rgba(200, 200lightblue !important 255, 0.6) !important;
+    text-shadow: -1px -1px 20px rgba(200, 200, 255, 0.6) !important;
   }
   </style>
 
@@ -139,7 +142,7 @@
             </section>
             <section id="code-samples1">
               <p>code</p>
-              <pre><code data-trim>
+              <pre><code data-trim class="small">
 @Controller
 @RequestMapping("/orders/{id}")
 @ExposesResourceFor(Payment.class)
@@ -177,7 +180,7 @@ public class PaymentController {
             </section>
             <section id="code-samples2">
               <p>code</p>
-              <pre><code data-trim>
+              <pre><code data-trim class="small">
 /**
  * Base class for entity implementations. Uses a {@link Long} id.
  */
@@ -205,7 +208,7 @@ public class AbstractEntity implements Identifiable<Long> {
             </section>
             <section id="code-samples3">
               <p>root-context.xml</p>
-              <pre><code data-trim>
+              <pre><code data-trim class="small">
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -235,7 +238,7 @@ public class AbstractEntity implements Identifiable<Long> {
             </section>
             <section id="code-samples4">
               <p>pom.xml</p>
-              <pre><code data-trim>
+              <pre><code data-trim class="small">
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -373,7 +376,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
             </section>
             <section id="code-samples-ass">
               <p>can get hard to decode</p>
-              <pre><code data-trim>
+              <pre><code data-trim class="small">
 .486P
 
 CR0_CD equ 040000000h   ; Cache Disable bit of CR0
@@ -422,7 +425,7 @@ code ends
           <section>
             <section id="code-dare1">
               <p>code</p>
-              <pre><code data-trim>
+              <pre><code data-trim class="small">
 public class Application extends Controller {
 
     /** Display the login page or dashboard if connected */
@@ -446,7 +449,7 @@ public class Application extends Controller {
             </section>
             <section id="code-dare2">
               <p>code</p>
-              <pre><code data-trim>
+              <pre><code data-trim class="small">
 public String validate() {
     User user = null;
     try {
@@ -466,7 +469,7 @@ public String validate() {
             </section>
             <section id="code-dare3">
               <p>application.conf</p>
-              <pre><code data-trim>
+              <pre><code data-trim class="small">
 # This is the main configuration file for the application.
 # ~~~~~
 
@@ -531,7 +534,7 @@ include "mail"
             </section>
             <section id="code-dare4">
               <p>routes.conf</p>
-              <pre><code data-trim>
+              <pre><code data-trim class="small">
 # Home page
 GET     /                    controllers.Application.index()
 GET     /dashboard           controllers.Dashboard.index()
@@ -550,7 +553,7 @@ POST    /settings/email      controllers.account.settings.Email.runEmail()
               <p><small>source from <a href="https://github.com/yesnault/PlayStartApp">https://github.com/yesnault/PlayStartApp</a></small></p>
             </section>
             <section id="code-dare5">
-              <pre><code data-trim>
+              <pre><code data-trim class="small">
 import sbt.Keys._
 
 name := "PlayStartApp"
@@ -613,6 +616,56 @@ lazy val root = (project in file(".")).enablePlugins(play.PlayJava)
               <h3>Hammock Driven Development</h3>
               <img src="img/hammock.jpg" alt="hammock">
               <p><small>presentation available here <a href="https://www.youtube.com/watch?v=f84n5oFoZBc">https://www.youtube.com/watch?v=f84n5oFoZBc</a></small></p>
+            </section>
+          </section>
+          <section>
+            <section id="quiz1" data-background="img/disco_bg.jpg" data-background-repeat="repeat">
+              <h1 class="disco-light">Quiz Time</h1>
+              <img src="img/Stitch-Elvis.jpg" alt="stitch elvis">
+            </section>
+            <section id="quiz2" data-background="img/disco_bg.jpg" data-background-repeat="repeat">
+              <p class="disco-light">
+                In <q cite="http://www.jamesshore.com/Agile-Book/">&quot;The Art of Agile Development&quot;</q> the author suggests the concept that modern 
+                <em class="fragment highlight-green">source code is actually the real software design</em> and modern programming languages convey the program flow much better than &apos;60
+              </p>
+              <h3 class="disco-light">Assembly Code</h3>
+              <pre><code data-trim style="padding-left: 1 0ex;">
+1000 NS% = (80 - LEN(T$)) / 2
+1010 S$ 0= ""
+1020 IF NS$ = 0 GOTO 1060
+1030 S$ = S$ + " "
+1040 NS% = NS$ - 1
+1050 GOTO 1020
+1060 PRINT S$ + T$
+1070 RETURN
+              </code></pre>
+            </section>
+            <section id="quiz3" data-background="img/disco_bg.jpg" data-background-repeat="repeat">
+              <p class="disco-light">Can you understand what this code does?</p>
+              <pre><code data-trim>
+def version1(text: String) {
+  
+  val center = (LENGTH - text.size) / 2
+  var space = ""
+  
+  for (i <- 0 until center) {
+    space += " "
+  }
+  
+  println(space + text + space)
+  
+}              
+              </code></pre>
+              <pre><code data-trim>
+def version2(text: String) = {
+  def recurse(space: String): String =
+    if ((space*2 + text).size == LENGTH) space + text + space
+    else recurse(space + " ")
+
+  println(recurse(""))
+}                
+              </code></pre>
+              <p class="disco-light fragment">Which version was easier to grok?</p>
             </section>
           </section>
       </div>
