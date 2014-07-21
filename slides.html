@@ -8,6 +8,13 @@
   <!-- For syntax highlighting -->
   <link rel="stylesheet" href="lib/css/zenburn.css">
 
+  <style>
+
+  code[data-trim] {
+    font-size: 10pt;
+  }
+  </style>
+
   <!-- If the query includes 'print-pdf', include the PDF print sheet -->
   <script>
   if( window.location.search.match( /print-pdf/gi ) ) {
@@ -29,12 +36,12 @@
       <div class="slides">
         <section id="title">
           <h1>Questioning the Status Quo</h1>
-          <h3>of Java, OOP and beyond</h3>
+          <h3>(through the looking glass) of Java, OOP and beyond</h3>
         </section>
 
         <section id="whoami">
           <h2>Who am I?</h2>
-          <p class="fragment roll-in">A programmer just like you</p>
+          <p class="fragment roll-in">A software developer just like you</p>
           <p class="fragment roll-in">... probably less smart than you, actually</p>
         </section>
 
@@ -121,138 +128,234 @@
               <p>code</p>
               <pre><code data-trim>
 @Controller
-@RequestMapping("/hello-world")
-public class HelloWorldController {
+@RequestMapping("/orders/{id}")
+@ExposesResourceFor(Payment.class)
+@RequiredArgsConstructor(onConstructor = @__(@Autowired))
+public class PaymentController {
 
-    private static final String template = "Hello, %s!";
-    private final AtomicLong counter = new AtomicLong();
+  private final @NonNull PaymentService paymentService;
+  private final @NonNull EntityLinks entityLinks;
 
-    @RequestMapping(method=RequestMethod.GET)
-    public @ResponseBody Greeting sayHello(
-                                    @RequestParam(value="name", 
-                                       required=false, 
-                                       defaultValue="Stranger") String name) {
-        return new Greeting(counter.incrementAndGet(), String.format(template, name));
+  /**
+   * Accepts a payment for an {@link Order}
+   */
+  @RequestMapping(value = PaymentLinks.PAYMENT, method = PUT)
+  ResponseEntity<PaymentResource> submitPayment(
+                                      @PathVariable("id") Order order, 
+                                      @RequestBody CreditCardNumber number) {
+
+    if (order == null || order.isPaid()) {
+      return new ResponseEntity<PaymentResource>(HttpStatus.NOT_FOUND);
     }
 
-}              </code></pre>
+    CreditCardPayment payment = paymentService.pay(order, number);
+
+    PaymentResource resource = new PaymentResource(order.getPrice(), payment.getCreditCard());
+    resource.add(entityLinks.linkToSingleResource(order));
+
+    return new ResponseEntity<PaymentResource>(resource, HttpStatus.CREATED);
+  }
+
+              </code></pre>
+              <p>
+                <small>source from <a href="https://github.com/olivergierke/spring-restbucks">https://github.com/olivergierke/spring-restbucks</a>
+                </small>
+              </p>
             </section>
             <section id="code-samples2">
               <p>code</p>
               <pre><code data-trim>
-@Configuration
-@EnableAutoConfiguration
-@ComponentScan
-public class Application {
+/**
+ * Base class for entity implementations. Uses a {@link Long} id.
+ */
+@MappedSuperclass
+@Getter
+@ToString
+@EqualsAndHashCode
+public class AbstractEntity implements Identifiable<Long> {
 
-    public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
-    }
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  @JsonIgnore
+  private final Long id;
 
+  protected AbstractEntity() {
+    this.id = null;
+  }
 }
               </code></pre>
+              <p>
+                <small>source from <a href="https://github.com/olivergierke/spring-restbucks">https://github.com/olivergierke/spring-restbucks</a>
+                </small>
+              </p>
               <p class="fragment roll-in">pretty terse... uh?</p>
             </section>
             <section id="code-samples3">
-              <p>configuration</p>
+              <p>root-context.xml</p>
               <pre><code data-trim>
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:mvc="http://www.springframework.org/schema/mvc"
   xmlns:context="http://www.springframework.org/schema/context"
-  xsi:schemaLocation="http://www.springframework.org/schema/beans
-    http://www.springframework.org/schema/beans/spring-beans.xsd
-    http://www.springframework.org/schema/context
-    http://www.springframework.org/schema/context/spring-context.xsd">
-  
-  <context:annotation-config />
-  <context:property-placeholder />
-  
-  <bean id="helloService" class="sample.xml.service.HelloWorldService"></bean>
-  <bean id="application" class="sample.xml.SampleSpringXmlApplication"></bean>
+  xsi:schemaLocation="
+    http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    http://www.springframework.org/schema/context 
+    http://www.springframework.org/schema/context/spring-context-3.0.xsd
+    http://www.springframework.org/schema/mvc 
+    http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 
-</beans>                
+  <import resource="db-context.xml"/>
+
+  <!-- Detects annotations like @Component, @Service, @Controller, @Repository, @Configuration -->
+  <context:component-scan base-package="xpadro.spring.web,controller,xpadro.spring.web.service"/>
+
+  <!-- Detects MVC annotations like @RequestMapping -->
+  <mvc:annotation-driven/>
+</beans>
               </code></pre>
+              <p>
+                <small>source from <a href="https://github.com/xpadro/spring-rest">https://github.com/xpadro/spring-rest</a>
+                </small>
+              </p>
             </section>
             <section id="code-samples4">
-              <p>build</p>
+              <p>pom.xml</p>
               <pre><code data-trim>
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
+  <groupId>org.springsource.restbucks</groupId>
+  <artifactId>restbucks</artifactId>
+  <packaging>war</packaging>
+  <version>1.0.0.BUILD-SNAPSHOT</version>
+  <name>Spring RESTBucks</name>
+
   <parent>
-    <!-- Your own application should inherit from spring-boot-starter-parent -->
     <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-samples</artifactId>
-    <version>1.2.0.BUILD-SNAPSHOT</version>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>1.1.4.RELEASE</version>
   </parent>
-  <artifactId>spring-boot-sample-actuator</artifactId>
-  <name>Spring Boot Actuator Sample</name>
-  <description>Spring Boot Actuator Sample</description>
-  <url>http://projects.spring.io/spring-boot/</url>
-  <organization>
-    <name>Pivotal Software, Inc.</name>
-    <url>http://www.spring.io</url>
-  </organization>
-              </code></pre>
-            </section>
-            <section id="code-samples5">
-              <p>still build</p>
-              <pre><code data-trim>
+
   <properties>
-    <main.basedir>${basedir}/../..</main.basedir>
+    <spring-data-releasetrain.version>Evans-BUILD-SNAPSHOT</spring-data-releasetrain.version>
+    <spring-hateoas.version>0.15.0.RELEASE</spring-hateoas.version>
+    <tomcat.version>8.0.9</tomcat.version>
   </properties>
+
   <dependencies>
+
+    <!-- Spring Data REST -->
+
     <dependency>
       <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-actuator</artifactId>
+      <artifactId>spring-boot-starter-data-rest</artifactId>
     </dependency>
+
     <dependency>
       <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-web</artifactId>
+      <artifactId>spring-boot-starter-data-jpa</artifactId>
     </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-security</artifactId>
-    </dependency>
-              </code></pre>
-            </section>
-            <section id="code-samples6">
-              <p>you get the idea</p>
-              <pre><code data-trim>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-jdbc</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-remote-shell</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.h2database</groupId>
-      <artifactId>h2</artifactId>
-    </dependency>
+
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-test</artifactId>
-      <scope>test</scope>
     </dependency>
-              </code></pre>
-            </section>
-            <section id="code-samples7">
-              <p>still there?</p>
-              <pre><code data-trim>
+
+    <!-- JDK 8 DateTime support for Hibernate -->
+
+    <dependency>
+      <groupId>org.jadira.usertype</groupId>
+      <artifactId>usertype.extended</artifactId>
+      <version>3.2.0.GA</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.fasterxml.jackson.datatype</groupId>
+      <artifactId>jackson-datatype-jsr310</artifactId>
+    </dependency>
+
+    <!-- Database -->
+
+    <dependency>
+      <groupId>org.hsqldb</groupId>
+      <artifactId>hsqldb</artifactId>
+      <scope>runtime</scope>
+    </dependency>
+
+    <!-- Misc -->
+
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-tx-events</artifactId>
+      <version>1.0.0.BUILD-SNAPSHOT</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>1.12.6</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>com.jayway.jsonpath</groupId>
+      <artifactId>json-path</artifactId>
+      <version>0.9.1</version>
+    </dependency>
+
   </dependencies>
+
   <build>
     <plugins>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+        </configuration>
+      </plugin>
+
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
       </plugin>
+
     </plugins>
   </build>
-</project>                
+
+  <repositories>
+    <repository>
+      <id>spring-libs-snapshot</id>
+      <url>http://repo.spring.io/libs-snapshot</url>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
+
+  <pluginRepositories>
+    <pluginRepository>
+      <id>spring-libs-snapshot</id>
+      <url>http://repo.spring.io/libs-snapshot</url>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </pluginRepository>
+  </pluginRepositories>
+
+</project>
               </code></pre>
+              <p>
+                <small>source from <a href="https://github.com/olivergierke/spring-restbucks">https://github.com/olivergierke/spring-restbucks</a>
+                </small>
+              </p>
+              <p class="fragment roll-in">still there?</p>
               <p class="fragment roll-in">well, this can get pretty verbose</p>
             </section>
           </section>
@@ -290,6 +393,7 @@ public class Application extends Controller {
     }
 
               </code></pre>
+              <p><small>source from <a href="https://github.com/yesnault/PlayStartApp">https://github.com/yesnault/PlayStartApp</a></small></p>
             </section>
             <section id="code-dare2">
               <p>code</p>
@@ -308,11 +412,27 @@ public String validate() {
     }
     return null;
 }
-</code></pre>
+              </code></pre>
+              <p><small>source from <a href="https://github.com/yesnault/PlayStartApp">https://github.com/yesnault/PlayStartApp</a></small></p>
             </section>
             <section id="code-dare3">
               <p>application.conf</p>
               <pre><code data-trim>
+# This is the main configuration file for the application.
+# ~~~~~
+
+# Secret key
+# ~~~~~
+# The secret key is used to secure cryptographics functions.
+# If you deploy your application to several instances be sure to use the same key!
+application.secret="..."
+
+# Global object 
+# ~~~~~
+# Define the Global object type for this application.
+# Default to Global in the root package.
+# global=Global
+
 # Database configuration
 # ~~~~~ 
 # You can declare as many datasources as you want.
@@ -325,12 +445,40 @@ db.default.url="jdbc:h2:mem:play"
 # You can expose this datasource via JNDI if needed (Useful for JPA)
 # db.default.jndiName=DefaultDS
 
+# Evolutions
+# ~~~~~
+# You can disable evolutions if needed
+# evolutions=disabled
+
+# Ebean configuration
+# ~~~~~
+# You can declare as many Ebean servers as you want.
+# By convention, the default server is named `default`
+#
+ebean.default="models.*"
+
+# Logger
+# ~~~~~
+# You can also configure logback (http://logback.qos.ch/), by providing a logger.xml file in the conf directory .
+
 # Root logger:
 logger.root=WARN
 
 # Logger used by the framework:
 logger.play=INFO
-</code></pre>
+
+# Logger provided to your application:
+logger.application=DEBUG
+
+application.langs="fr,en"
+
+# The public facing name of the site.  Used when sending reset emails.
+server.hostname="localhost:9000"
+
+include "mail"
+
+              </code></pre>
+              <p><small>source from <a href="https://github.com/yesnault/PlayStartApp">https://github.com/yesnault/PlayStartApp</a></small></p>
             </section>
             <section id="code-dare4">
               <p>routes.conf</p>
@@ -350,9 +498,9 @@ POST    /settings/email      controllers.account.settings.Email.runEmail()
 
 ...
               </code></pre>
+              <p><small>source from <a href="https://github.com/yesnault/PlayStartApp">https://github.com/yesnault/PlayStartApp</a></small></p>
             </section>
             <section id="code-dare5">
-              <p>build.sbt</p>
               <pre><code data-trim>
 import sbt.Keys._
 
@@ -370,11 +518,6 @@ libraryDependencies ++= Seq(
   "com.typesafe" %% "play-plugins-mailer" % "2.2.0",
   filters
 )
-              </code></pre>
-            </section>
-            <section id="code-dare6">
-              <p>build.sbt / 2</p>
-              <pre><code data-trim>
 resolvers ++= Seq(
     "Apache" at "http://repo1.maven.org/maven2/",
     "jBCrypt Repository" at "http://repo1.maven.org/maven2/org/",
@@ -383,6 +526,8 @@ resolvers ++= Seq(
 
 lazy val root = (project in file(".")).enablePlugins(play.PlayJava)
               </code></pre>
+              <p><small>source from <a href="https://github.com/yesnault/PlayStartApp">https://github.com/yesnault/PlayStartApp</a></small></p>
+              <p class="fragment roll-in">It's all here folks</p>
             </section>
           </section>
 
