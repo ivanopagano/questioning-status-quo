@@ -358,6 +358,39 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
               <p class="fragment roll-in">still there?</p>
               <p class="fragment roll-in">well, this can get pretty verbose</p>
             </section>
+            <section id="code-samples-ass">
+              <p>low level</p>
+              <pre><code data-trim>
+.486P
+
+CR0_CD equ 040000000h   ; Cache Disable bit of CR0
+CR0_NW equ 020000000h   ; Not Write-through bit of CR0
+
+DisableCache proc
+    pushf                       ; save the flags
+    push    eax                 ; save eax
+    cli                         ; disable interrupts while we do this
+    mov     eax,cr0             ; read CR0
+    or      eax,CR0_CD          ; set CD but not NW bit of CR0
+    mov     cr0,eax             ; cache is now disabled
+    wbinvd                      ; flush and invalidate cache
+
+    ; the cache is effectively disabled at this point, but memory
+    ; consistency will be maintained.  To completely disable cache,
+    ; the following two lines may used as well:
+
+    or      eax,CR0_NW          ; now set the NW bit
+    mov     cr0,eax             ; turn off the cache entirely
+    pop     eax                 ; restore eax
+    popf                        ; restore the flags
+    ret                         ; return to caller
+DisableCache endp
+code ends
+        end
+              </code></pre>
+            </section>
+            <section><img src="img/just-kidding.jpg" alt="just kidding">
+            </section>
           </section>
           <section id="enterprise-code">
             <p>"Traditional" enterprise code today looks just like that</p>
