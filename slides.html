@@ -619,17 +619,19 @@ lazy val root = (project in file(".")).enablePlugins(play.PlayJava)
             </section>
           </section>
           <section>
-            <section id="quiz1" data-background="img/disco_bg.jpg" data-background-repeat="repeat">
+            <section id="quiz1" data-background="img/disco_theme_by_sk1ttter_stock.jpg" data-background-repeat="repeat">
               <h1 class="disco-light">Quiz Time</h1>
               <img src="img/Stitch-Elvis.jpg" alt="stitch elvis">
+              <p><a href="http://sk1ttter-stock.deviantart.com/" target="_blank">
+                <small class="copyright">background image by sk1ttter-stock</small>
+              </a></p>              
             </section>
-            <section id="quiz2" data-background="img/disco_bg.jpg" data-background-repeat="repeat">
-              <p class="disco-light">
-                In <q cite="http://www.jamesshore.com/Agile-Book/">&quot;The Art of Agile Development&quot;</q> the author suggests the concept that modern 
-                <em class="fragment highlight-green">source code is actually the real software design</em> and modern programming languages convey the program flow much better than &apos;60
-              </p>
-              <h3 class="disco-light">Assembly Code</h3>
-              <pre><code data-trim style="padding-left: 1 0ex;">
+            <section class="disco-light" id="quiz2" data-background="img/disco_theme_by_sk1ttter_stock.jpg" data-background-repeat="repeat">
+              <p>
+                In <q cite="http://www.jamesshore.com/Agile-Book/">&quot;The Art of Agile Development&quot;</q> the author explores the concept that 
+                <em class="fragment highlight-red">source code is actually the real software design</em></p>
+                <p>He supports the concept with an example showing how modern structured programming conveys the program flow much better than Assembly code</p>
+              <pre><code data-trim style="padding-left: 10ex;">
 1000 NS% = (80 - LEN(T$)) / 2
 1010 S$ 0= ""
 1020 IF NS$ = 0 GOTO 1060
@@ -639,9 +641,10 @@ lazy val root = (project in file(".")).enablePlugins(play.PlayJava)
 1060 PRINT S$ + T$
 1070 RETURN
               </code></pre>
+              <p class="disco-light">So much that we seldom need flow diagrams anymore</p>
             </section>
-            <section id="quiz3" data-background="img/disco_bg.jpg" data-background-repeat="repeat">
-              <p class="disco-light">Can you understand what this code does?</p>
+            <section id="quiz3" data-background="img/disco_theme_by_sk1ttter_stock.jpg" data-background-repeat="repeat">
+              <p class="disco-light">Can you make out what both of these functions do?</p>
               <pre><code data-trim>
 def version1(text: String) {
   
@@ -667,6 +670,9 @@ def version2(text: String) = {
               </code></pre>
               <p class="disco-light fragment">Which version was easier to grok?</p>
             </section>
+          </section>
+          <section id="rights">
+            <p>Images of <em>Lilo & Stitch</em> are copyright property of Walt Disney Pictures</p>
           </section>
       </div>
 
