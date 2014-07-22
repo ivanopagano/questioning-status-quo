@@ -26,13 +26,25 @@
 
   .disco-light {
     color: lightblue !important;
-    text-shadow: 1px 1px 20px rgba(200, 200lightblue !important 255, 0.6) !important;
-    text-shadow: -1px -1px 20px rgba(200, 200, 255, 0.6) !important;
+    text-shadow: 1px 1px 15px rgba(200, 200, 255, 1.0) !important;
+    text-shadow: -1px -1px 15px rgba(200, 200, 255, 1.0) !important;
   }
 
   img.goals-img {
     border: none ; 
     height: 400px;
+  }
+
+  .candle-font {
+    color: #FEFEFC;
+    text-align: left;
+    -webkit-transform: translate(0ex, -10ex);
+    text-shadow: 3px 3px 13px #F4C05D !important;
+    text-shadow: -3px -3px 13px #FF532B !important;
+  }
+
+  #dev-in-decade {
+    -webkit-transform: translate(0px, -6ex);
   }
 
   </style>
@@ -97,34 +109,34 @@
           </section>
         </section>
 
-        <section id="first-time">
-          <section id="first-time0">
+        <section id="memory-lane">
+          <section id="memory-lane0">
             <h2>Let's start our journey from the beginning</h2>
             <img src="img/alyssa-in-wonderland.jpg" alt="rabbit-hole" style="width: 40%; height: 40%;">
             <p><a href="http://art-a-designer.ru/?p=51051" target="_blank">
               <small class="copyright">image &copy; Justin Overell</small>
             </a></p>
           </section>
-          <section id="first-time1">
+          <section id="memory-lane1" data-background="img/dark-candle.jpg" class="candle-font" data-state="candle-series">
             <p>Think about your first steps in programming...</p>
           </section>
-          <section id="first-time2">
+          <section id="memory-lane2" data-background="img/dark-candle.jpg" class="candle-font">
             <p>You probably felt excited, curious and every bit of script that worked was so satisfying!</p>
           </section>
-          <section id="first-time3">
+          <section id="memory-lane3" data-background="img/dark-candle.jpg" class="candle-font">
             <p>Even if you've been forced to learn programming as schoolwork, you probably got addicted to it
               sooner or later</p>
               <p class="fragment rool-in">...otherwise you wouldn't be here today, listening to this talk</p>
             </section>
-            <section id="first-time4">
+            <section id="memory-lane4" data-background="img/dark-candle.jpg" class="candle-font">
               <p>It can happen though, that such passion fades in the background, trampled by daily chores</p>
             </section>
-            <section id="first-time5">
+            <section id="memory-lane5" data-background="img/dark-candle.jpg" class="candle-font">
               <p>We should strive to try and keep caring for what we do, and keep alive that initial spark of passion for this activity</p>
             </section>
           </section>
 
-          <section id="dev-in-decade">
+          <section id="dev-in-decade"  data-state="candle-stop" data-background="img/utopia.jpg">
             <h3><blockquote cite="http://www.slideshare.net/Codemotion/developing-in-a-decade">
               &ldquo;As Developers, as an Industry, we have the potential to create a better society&rdquo;
             </blockquote></h3>
@@ -790,6 +802,14 @@ def version2(queued: Iterable[Person]): Iterable[Person] = {
         { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
         ]
       });
+
+      Reveal.addEventListener('candle-series', function() {
+        Reveal.configure({transition: 'zoom'});
+      }, false);
+
+      Reveal.addEventListener('candle-stop', function() {
+        Reveal.configure({transition: 'default'});
+      }, false);
 
 </script>
 
