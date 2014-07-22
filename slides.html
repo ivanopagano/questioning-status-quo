@@ -113,7 +113,10 @@
               &ldquo;As Developers, as an Industry, we have the potential to create a better society&rdquo;
             </blockquote></h3>
             <p>Hadid Hariri from <span class="emp">jetbrains</span> - Codemotion Rome 2014</p>
-            <p><small>slides available here <a href="http://www.slideshare.net/Codemotion/developing-in-a-decade">www.slideshare.net/Codemotion/developing-in-a-decade</a></small></p>
+            <p>
+              <small>slides available here <a href="http://www.slideshare.net/Codemotion/developing-in-a-decade">www.slideshare.net/Codemotion/developing-in-a-decade</a>
+              </small>
+            </p>
             <p class="fragment roll-in">Do you still care?</p>
           </section>
 
@@ -670,11 +673,73 @@ def version2(text: String) = {
   println(recurse(""))
 }                
               </code></pre>
-              <p class="disco-light fragment">Which version was easier to grok?</p>
+              <p class="disco-light fragment roll-in">Which version was easier to grok?</p>
+            </section>
+            <section id="quiz4-pre" data-background="img/disco_theme_by_sk1ttter_stock.jpg" data-background-repeat="repeat">
+              <p class="disco-light">Before the second test we need some preparation</p>
+              <pre><code data-trim>
+//A class with some simple-to-understand attributes
+class Person(val name: String, val age: Int, val gender: String)
+
+//An appendable "array-like" class
+class ArrayBuffer
+              </code></pre>
+              <p class="disco-light fragment roll-in">ready?</p>
+            </section>
+            <section id="quiz4" data-background="img/disco_theme_by_sk1ttter_stock.jpg" data-background-repeat="repeat">
+              <p class="disco-light">So let's rock it!</p>
+              <pre><code data-trim>
+def version1(queued: Iterable[Person]): Iterable[Person] = {
+  val (boyz, girlz) = queued.filter(_.age > 18)
+                            .partition(_.gender == "male")
+
+  val boyzIn = boyz take (girlz.size / 2)
+
+  val in = (boyzIn ++ girlz).to[Set]
+
+  for (boy <- boyz if !in(boy))
+    println(s"Go home, ${boy.name}. Better luck tommorrow, kiddo!")
+
+  in
+}
+              </code></pre>
+              <pre><code data-trim>
+def version2(queued: Iterable[Person]): Iterable[Person] = {
+  val girlz = ArrayBuffer[Person]()
+  val boyz = ArrayBuffer[Person]()
+  for (person <- queued) {
+    if (person.age > 18) {
+      if (person.gender == "male") boyz.append(person)
+      else girlz.append(person)
+    }
+  }
+  val in = ArrayBuffer[Person]()
+  in.appendAll(girlz)
+  for (i <- 0 until boyz.size) {
+    if (i < girlz.size / 2) in.append(boyz(i))
+    else println(s"Go home, ${boyz(i).name}. Better luck tommorrow, kiddo!")
+  }
+  return in
+}
+              </code></pre>
+            </section>
+            <section id="quiz-results" data-background="img/disco_theme_by_sk1ttter_stock.jpg" data-background-repeat="repeat">
+              <h2 class="disco-light">Same results?</h2>
             </section>
           </section>
+          <section id="quiz-learned">
+            <h3>Maybe we learned something</h3>
+            <blockquote  class="fragment roll-in" cite="http://www.cs.utexas.edu/users/EWD/OtherDocs/To%20the%20Budget%20Council%20concerning%20Haskell.pdf">
+              &ldquo;It is not only the violin that shapes the violinist, we are all shaped by the tools we train ourselves to use, 
+              and in this respect programming languages have a devious influence: they shape our thinking habits.&rdquo;
+            </blockquote>
+            <p class="fragment roll-in">Edsger W. Dijkstra - Letter to the budget council of The University of Texas at Austin</p>
+            <p class="fragment roll-in"><small>the whole letter is here <a href="http://www.cs.utexas.edu/users/EWD/OtherDocs/To%20the%20Budget%20Council%20concerning%20Haskell.pdf">
+              http://www.cs.utexas.edu/users/EWD/OtherDocs/To%20the%20Budget%20Council%20concerning%20Haskell.pdf</a></small>
+            </p>
+          </section>
           <section id="rights">
-            <p>Images of <em>Lilo & Stitch</em> are copyright property of Walt Disney Pictures</p>
+            <p><small>Copyrights for <em>Lilo & Stitch</em> images belong to Walt Disney Pictures</small></p>
           </section>
       </div>
 
