@@ -157,12 +157,12 @@ public class PaymentController {
    * Accepts a payment for an {@link Order}
    */
   @RequestMapping(value = PaymentLinks.PAYMENT, method = PUT)
-  ResponseEntity<PaymentResource> submitPayment(
+  ResponseEntity&lt;PaymentResource&gt; submitPayment(
                                       @PathVariable("id") Order order, 
                                       @RequestBody CreditCardNumber number) {
 
     if (order == null || order.isPaid()) {
-      return new ResponseEntity<PaymentResource>(HttpStatus.NOT_FOUND);
+      return new ResponseEntity&lt;PaymentResource&gt;(HttpStatus.NOT_FOUND);
     }
 
     CreditCardPayment payment = paymentService.pay(order, number);
@@ -170,9 +170,8 @@ public class PaymentController {
     PaymentResource resource = new PaymentResource(order.getPrice(), payment.getCreditCard());
     resource.add(entityLinks.linkToSingleResource(order));
 
-    return new ResponseEntity<PaymentResource>(resource, HttpStatus.CREATED);
+    return new ResponseEntity&lt;PaymentResource&gt;(resource, HttpStatus.CREATED);
   }
-
               </code></pre>
               <p>
                 <small>source from <a href="https://github.com/olivergierke/spring-restbucks">https://github.com/olivergierke/spring-restbucks</a>
@@ -189,7 +188,7 @@ public class PaymentController {
 @Getter
 @ToString
 @EqualsAndHashCode
-public class AbstractEntity implements Identifiable<Long> {
+public class AbstractEntity implements Identifiable&lt;Long&gt; {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
@@ -209,9 +208,9 @@ public class AbstractEntity implements Identifiable<Long> {
             </section>
             <section id="code-samples3">
               <p>root-context.xml</p>
-              <pre><code data-trim class="small">
-<?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
+              <pre><code data-trim class="xml small">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;beans xmlns="http://www.springframework.org/schema/beans"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:mvc="http://www.springframework.org/schema/mvc"
   xmlns:context="http://www.springframework.org/schema/context"
@@ -221,16 +220,16 @@ public class AbstractEntity implements Identifiable<Long> {
     http://www.springframework.org/schema/context 
     http://www.springframework.org/schema/context/spring-context-3.0.xsd
     http://www.springframework.org/schema/mvc 
-    http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
+    http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd"&gt;
 
-  <import resource="db-context.xml"/>
+  &lt;import resource="db-context.xml"/&gt;
 
-  <!-- Detects annotations like @Component, @Service, @Controller, @Repository, @Configuration -->
-  <context:component-scan base-package="xpadro.spring.web,controller,xpadro.spring.web.service"/>
+  &lt;!-- Detects annotations like @Component, @Service, @Controller, @Repository, @Configuration --&gt;
+  &lt;context:component-scan base-package="xpadro.spring.web,controller,xpadro.spring.web.service"/&gt;
 
-  <!-- Detects MVC annotations like @RequestMapping -->
-  <mvc:annotation-driven/>
-</beans>
+  &lt;!-- Detects MVC annotations like @RequestMapping --&gt;
+  &lt;mvc:annotation-driven/&gt;
+&lt;/beans&gt;
               </code></pre>
               <p>
                 <small>source from <a href="https://github.com/xpadro/spring-rest">https://github.com/xpadro/spring-rest</a>
@@ -240,133 +239,133 @@ public class AbstractEntity implements Identifiable<Long> {
             <section id="code-samples4">
               <p>pom.xml</p>
               <pre><code data-trim class="small">
-<?xml version="1.0" encoding="UTF-8"?>
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>org.springsource.restbucks</groupId>
-  <artifactId>restbucks</artifactId>
-  <packaging>war</packaging>
-  <version>1.0.0.BUILD-SNAPSHOT</version>
-  <name>Spring RESTBucks</name>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;
+&lt;project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"&gt;
+  &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+  &lt;groupId&gt;org.springsource.restbucks&lt;/groupId&gt;
+  &lt;artifactId&gt;restbucks&lt;/artifactId&gt;
+  &lt;packaging&gt;war&lt;/packaging&gt;
+  &lt;version&gt;1.0.0.BUILD-SNAPSHOT&lt;/version&gt;
+  &lt;name&gt;Spring RESTBucks&lt;/name&gt;
 
-  <parent>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-parent</artifactId>
-    <version>1.1.4.RELEASE</version>
-  </parent>
+  &lt;parent&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;
+    &lt;version&gt;1.1.4.RELEASE&lt;/version&gt;
+  &lt;/parent&gt;
 
-  <properties>
-    <spring-data-releasetrain.version>Evans-BUILD-SNAPSHOT</spring-data-releasetrain.version>
-    <spring-hateoas.version>0.15.0.RELEASE</spring-hateoas.version>
-    <tomcat.version>8.0.9</tomcat.version>
-  </properties>
+  &lt;properties&gt;
+    &lt;spring-data-releasetrain.version&gt;Evans-BUILD-SNAPSHOT&lt;/spring-data-releasetrain.version&gt;
+    &lt;spring-hateoas.version&gt;0.15.0.RELEASE&lt;/spring-hateoas.version&gt;
+    &lt;tomcat.version&gt;8.0.9&lt;/tomcat.version&gt;
+  &lt;/properties&gt;
 
-  <dependencies>
+  &lt;dependencies&gt;
 
-    <!-- Spring Data REST -->
+    &lt;!-- Spring Data REST --&gt;
 
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-data-rest</artifactId>
-    </dependency>
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+      &lt;artifactId&gt;spring-boot-starter-data-rest&lt;/artifactId&gt;
+    &lt;/dependency&gt;
 
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-data-jpa</artifactId>
-    </dependency>
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+      &lt;artifactId&gt;spring-boot-starter-data-jpa&lt;/artifactId&gt;
+    &lt;/dependency&gt;
 
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-test</artifactId>
-    </dependency>
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+      &lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;
+    &lt;/dependency&gt;
 
-    <!-- JDK 8 DateTime support for Hibernate -->
+    &lt;!-- JDK 8 DateTime support for Hibernate --&gt;
 
-    <dependency>
-      <groupId>org.jadira.usertype</groupId>
-      <artifactId>usertype.extended</artifactId>
-      <version>3.2.0.GA</version>
-    </dependency>
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.jadira.usertype&lt;/groupId&gt;
+      &lt;artifactId&gt;usertype.extended&lt;/artifactId&gt;
+      &lt;version&gt;3.2.0.GA&lt;/version&gt;
+    &lt;/dependency&gt;
 
-    <dependency>
-      <groupId>com.fasterxml.jackson.datatype</groupId>
-      <artifactId>jackson-datatype-jsr310</artifactId>
-    </dependency>
+    &lt;dependency&gt;
+      &lt;groupId&gt;com.fasterxml.jackson.datatype&lt;/groupId&gt;
+      &lt;artifactId&gt;jackson-datatype-jsr310&lt;/artifactId&gt;
+    &lt;/dependency&gt;
 
-    <!-- Database -->
+    &lt;!-- Database --&gt;
 
-    <dependency>
-      <groupId>org.hsqldb</groupId>
-      <artifactId>hsqldb</artifactId>
-      <scope>runtime</scope>
-    </dependency>
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.hsqldb&lt;/groupId&gt;
+      &lt;artifactId&gt;hsqldb&lt;/artifactId&gt;
+      &lt;scope&gt;runtime&lt;/scope&gt;
+    &lt;/dependency&gt;
 
-    <!-- Misc -->
+    &lt;!-- Misc --&gt;
 
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-tx-events</artifactId>
-      <version>1.0.0.BUILD-SNAPSHOT</version>
-    </dependency>
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+      &lt;artifactId&gt;spring-tx-events&lt;/artifactId&gt;
+      &lt;version&gt;1.0.0.BUILD-SNAPSHOT&lt;/version&gt;
+    &lt;/dependency&gt;
 
-    <dependency>
-      <groupId>org.projectlombok</groupId>
-      <artifactId>lombok</artifactId>
-      <version>1.12.6</version>
-      <scope>provided</scope>
-    </dependency>
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.projectlombok&lt;/groupId&gt;
+      &lt;artifactId&gt;lombok&lt;/artifactId&gt;
+      &lt;version&gt;1.12.6&lt;/version&gt;
+      &lt;scope&gt;provided&lt;/scope&gt;
+    &lt;/dependency&gt;
 
-    <dependency>
-      <groupId>com.jayway.jsonpath</groupId>
-      <artifactId>json-path</artifactId>
-      <version>0.9.1</version>
-    </dependency>
+    &lt;dependency&gt;
+      &lt;groupId&gt;com.jayway.jsonpath&lt;/groupId&gt;
+      &lt;artifactId&gt;json-path&lt;/artifactId&gt;
+      &lt;version&gt;0.9.1&lt;/version&gt;
+    &lt;/dependency&gt;
 
-  </dependencies>
+  &lt;/dependencies&gt;
 
-  <build>
-    <plugins>
+  &lt;build&gt;
+    &lt;plugins&gt;
 
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-          <source>1.8</source>
-          <target>1.8</target>
-        </configuration>
-      </plugin>
+      &lt;plugin&gt;
+        &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+        &lt;artifactId&gt;maven-compiler-plugin&lt;/artifactId&gt;
+        &lt;configuration&gt;
+          &lt;source&gt;1.8&lt;/source&gt;
+          &lt;target&gt;1.8&lt;/target&gt;
+        &lt;/configuration&gt;
+      &lt;/plugin&gt;
 
-      <plugin>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-maven-plugin</artifactId>
-      </plugin>
+      &lt;plugin&gt;
+        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+        &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;
+      &lt;/plugin&gt;
 
-    </plugins>
-  </build>
+    &lt;/plugins&gt;
+  &lt;/build&gt;
 
-  <repositories>
-    <repository>
-      <id>spring-libs-snapshot</id>
-      <url>http://repo.spring.io/libs-snapshot</url>
-      <snapshots>
-        <enabled>true</enabled>
-      </snapshots>
-    </repository>
-  </repositories>
+  &lt;repositories&gt;
+    &lt;repository&gt;
+      &lt;id&gt;spring-libs-snapshot&lt;/id&gt;
+      &lt;url&gt;http://repo.spring.io/libs-snapshot&lt;/url&gt;
+      &lt;snapshots&gt;
+        &lt;enabled&gt;true&lt;/enabled&gt;
+      &lt;/snapshots&gt;
+    &lt;/repository&gt;
+  &lt;/repositories&gt;
 
-  <pluginRepositories>
-    <pluginRepository>
-      <id>spring-libs-snapshot</id>
-      <url>http://repo.spring.io/libs-snapshot</url>
-      <snapshots>
-        <enabled>true</enabled>
-      </snapshots>
-    </pluginRepository>
-  </pluginRepositories>
+  &lt;pluginRepositories&gt;
+    &lt;pluginRepository&gt;
+      &lt;id&gt;spring-libs-snapshot&lt;/id&gt;
+      &lt;url&gt;http://repo.spring.io/libs-snapshot&lt;/url&gt;
+      &lt;snapshots&gt;
+        &lt;enabled&gt;true&lt;/enabled&gt;
+      &lt;/snapshots&gt;
+    &lt;/pluginRepository&gt;
+  &lt;/pluginRepositories&gt;
 
-</project>
+&lt;/project&gt;
               </code></pre>
               <p>
                 <small>source from <a href="https://github.com/olivergierke/spring-restbucks">https://github.com/olivergierke/spring-restbucks</a>
@@ -471,7 +470,7 @@ public String validate() {
             </section>
             <section id="code-dare3">
               <p>application.conf</p>
-              <pre><code data-trim class="small">
+              <pre><code data-trim class="no-highlight small">
 # This is the main configuration file for the application.
 # ~~~~~
 
@@ -555,6 +554,7 @@ POST    /settings/email      controllers.account.settings.Email.runEmail()
               <p><small>source from <a href="https://github.com/yesnault/PlayStartApp">https://github.com/yesnault/PlayStartApp</a></small></p>
             </section>
             <section id="code-dare5">
+              <p>build.sbt</p>
               <pre><code data-trim class="small">
 import sbt.Keys._
 
