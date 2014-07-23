@@ -14,9 +14,13 @@
     font-size: 10pt;
   }
 
-  .shaded {
-    text-shadow: 1px 1px 10px rgba(255, 255, 255, 0.6) !important;
-    text-shadow: -1px -1px 10px rgba(255, 255, 255, 0.6) !important;
+  .glow {
+    text-shadow: 1px 1px 8px rgba(255, 255, 255, 0.6) !important;
+    text-shadow: -1px -1px 8px rgba(255, 255, 255, 0.6) !important;
+  }
+
+  .shadow {
+    text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.6) !important;
   }
 
   small.copyright {
@@ -59,7 +63,6 @@
     document.getElementsByTagName( 'head' )[0].appendChild( link );
   }
   </script>
-
     <!--[if lt IE 9]>
     <script src="lib/js/html5shiv.js"></script>
     <![endif]-->
@@ -442,13 +445,13 @@ code ends
           </section>
           <section id="enterprise-code">
             <p>"Traditional" enterprise code today looks just like that</p>
-            <span><img src="img/javaee.png" alt="javaee" style="height: 160px;"></span>
-            <span><img src="img/springio.png" alt="spring.io" style="height: 160px;"></span>
-            <span><img src="img/wildfly.png" alt="wildfly" style="height: 160px;"></span>
+            <span><img src="img/javaee.png"  alt="javaee" style="height: 160px; -webkit-transform: translate(-4ex, 3ex) rotate(-6deg);"></span>
+            <span><img src="img/springio.png"  alt="spring.io" style="height: 160px; -webkit-transform: translate(0ex, 5ex) rotate(3deg);"></span>
+            <span><img src="img/wildfly.png"  alt="wildfly" style="height: 160px; -webkit-transform: translate(3ex, 3ex) rotate(5deg);"></span>
           </section>
   
           <section id="dare" data-background="img/Through_the_Looking_Glass__by_Sugarock99.jpg">
-            <h2 class="shaded">Do we dare and try something different?</h2>
+            <h2 class="glow">Do we dare and try something different?</h2>
             <a href="http://www.elenakalisphoto.com/" target="_blank">
               <small class="copyright">image &copy; Elena Kalis</small>
             </a>
