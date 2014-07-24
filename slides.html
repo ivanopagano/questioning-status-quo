@@ -73,6 +73,7 @@
       <div class="slides">
         <section id="title">
           <h1>Questioning the Status Quo</h1>
+          <img src="img/red_blue_pill.jpg" alt="red-or-blue-pill" style="height: 150px;">
           <h3>(through the looking glass) of Java, OOP and beyond</h3>
         </section>
 
@@ -786,10 +787,10 @@ def version2(queued: Iterable[Person]): Iterable[Person] = {
           </section>
 
           <section id="explore">
-            <section id="explore1">
+            <section id="explore-pre">
               <h2>A short and approximate parade of exploration opportunities for the modern java developer</h2>
             </section>
-            <section id="explore2">
+            <section id="explore-design">
               <h3>At the design level</h3>
               <p><img src="img/hexagonal_architecture_sketch.jpg" style="height: 200px;" alt="hexagonal-arch"></p>
               <table>
@@ -815,7 +816,7 @@ def version2(queued: Iterable[Person]): Iterable[Person] = {
                 </tbody>
               </table>
             </section>
-            <section id="explore3">
+            <section id="explore-frameworks">
               <h3>At the framework stack level</h3>
               <p><img src="img/java-framework.jpg" style="height: 200px;" alt="hexagonal-arch"></p>
               <table>
@@ -853,7 +854,7 @@ def version2(queued: Iterable[Person]): Iterable[Person] = {
                 </tbody>
               </table>
             </section>
-            <section id="explore4">
+            <section id="explore-language">
               <h3>At the language level</h3>
               <p><img src="img/language.jpg" style="height: 200px;" alt="hexagonal-arch"></p>
               <table>
@@ -901,6 +902,63 @@ def version2(queued: Iterable[Person]): Iterable[Person] = {
             <p>and here the slides </p>
             <p><small><a href="http://static.raibledesigns.com/repository/presentations/The_Modern_Java_Web_Developer_Bootcamp_Devoxx2013.pdf">http://static.raibledesigns.com/repository/presentations/The_Modern_Java_Web_Developer_Bootcamp_Devoxx2013.pdf</a></small></p>
             <p><small>[beware! heavy pdf]</small></p>
+          </section>
+
+          <section id="raise-level">
+            <h3>Time to take off and fly a little higher</h3>
+            <img src="img/neo-lookup.jpg" alt="neo-lookup" style="width: 70%;">
+          </section>
+          <section id="oo-fp">
+            <h2 style="-webkit-transform: translate(0px, -30px);">the Object-Oriented vs. Functional debate</h2>
+            <h4 style="-webkit-transform: translate(0px, -30px);">Even though it's hard to define <code>OOP</code> and <code>FP</code>, we can identify some core features of each</h4>
+            <table>
+              <thead>
+                <tr>
+                  <th>OOP</th>
+                  <th>FP</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="fragment" data-fragment-index="1">Modularity/Scoping</td>
+                  <td class="fragment" data-fragment-index="3">Composability</td>
+                </tr>
+                <tr>
+                  <td class="fragment" data-fragment-index="2">Encapsulation (reduce dependencies)</td>
+                  <td class="fragment" data-fragment-index="4">Abstraction</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td class="fragment" data-fragment-index="5">Mathematical Reasoning (pureness & immutability)</td>
+                </tr>
+              </tbody>
+            </table>
+            <p  style="-webkit-transform: translate(0px, 20px);" class="fragment roll-in"  data-fragment-index="6">
+              both approaches have <em>reusability</em> and <em>simplicity</em> as goals
+            </p>
+          </section>
+          <section data-background="img/stack-of-papers.jpg">
+            <h3>Suggested readings on the subject</h3>
+            <p class="fragment glow">D.L. Parnas - <strong>On the Criteria To Be Used in Decomposing Systems into Modules</strong><br>
+            <small>
+              <a href="https://www.cs.umd.edu/class/spring2003/cmsc838p/Design/criteria.pdf">https://www.cs.umd.edu/class/spring2003/cmsc838p/Design/criteria.pdf</a>
+            </small>
+            </p>
+            <p class="fragment glow">M.Odersky; M.Zenger - <strong>Scalable Component Abstractions</strong><br>
+            <small>
+              <a href="http://lampwww.epfl.ch/~odersky/papers/ScalableComponent.pdf">http://lampwww.epfl.ch/~odersky/papers/ScalableComponent.pdf</a>
+            </small>
+            </p>
+            <p class="fragment glow">J.Hughes - <strong>Why Functional Programming Matters</strong><br>
+            <small>
+              <a href="http://www.cse.chalmers.se/~rjmh/Papers/whyfp.html">http://www.cse.chalmers.se/~rjmh/Papers/whyfp.html</a>
+            </small>
+            </p>
+            <p class="fragment glow">H.Abelson; G.J.Sussman - <strong>Structure and Interpretation of Computer Programs</strong><br>
+            <small>
+              <a href="http://mitpress.mit.edu/sicp/">http://mitpress.mit.edu/sicp/</a>
+            </small>
+            </p>
           </section>
 
           <section id="rights">
