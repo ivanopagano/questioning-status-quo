@@ -910,7 +910,7 @@ def version2(queued: Iterable[Person]): Iterable[Person] = {
           </section>
           <section id="oo-fp">
             <h2 style="-webkit-transform: translate(0px, -30px);">the Object-Oriented vs. Functional debate</h2>
-            <h4 style="-webkit-transform: translate(0px, -30px);">Even though it's hard to define <code>OOP</code> and <code>FP</code>, we can identify some core features of each</h4>
+            <h4 style="-webkit-transform: translate(0px, -30px);">Even though it's hard to define both, we can try to identify some core features of each</h4>
             <table>
               <thead>
                 <tr>
@@ -937,7 +937,7 @@ def version2(queued: Iterable[Person]): Iterable[Person] = {
               both approaches have <em>reusability</em> and <em>simplicity</em> as goals
             </p>
           </section>
-          <section data-background="img/stack-of-papers.jpg">
+          <section id="oo-fp-papers" data-background="img/stack-of-papers.jpg">
             <h3>Suggested readings on the subject</h3>
             <p class="fragment glow">D.L. Parnas - <strong>On the Criteria To Be Used in Decomposing Systems into Modules</strong><br>
             <small>
@@ -960,6 +960,46 @@ def version2(queued: Iterable[Person]): Iterable[Person] = {
             </small>
             </p>
           </section>
+          <section id="oo-fp-mismatch">
+            <h2>Impedance Mismatch</h2>
+            <ul>
+              <li><h4><code>OOP</code> attaches behaviour to data</h4></li>
+              <li><h4><code>FP</code> separates functions from data</h4></li>
+            </ul>
+            <img src="img/square-round.jpg" alt="square-round">
+            <p class="fragment roll-in">Interestingly, the FP approach to data is considered an anti-pattern in OOP</p>
+          </section>
+          <section id="oo-orm-mismatch">
+            <h3>Impedance Mismatch (detour)</h3>
+            <p>Object Relational Mapping has been called <q>&ldquo;The Vietnam of Computer Science&rdquo;</q></p>
+            <img src="img/vietnam.jpg" alt="vietnam">
+            <small>Ted Neward in <a href="http://blogs.tedneward.com/2006/06/26/The+Vietnam+Of+Computer+Science.aspx">http://blogs.tedneward.com/2006/06/26/The+Vietnam+Of+Computer+Science.aspx</a></small>
+          </section>
+          <section id="nosql-nodb">
+            <h3>Is Relational Database always the best choice?</h3>
+            <p class="fragment">&ldquo;Database Driven Development&rdquo; anyone?</p>
+            <p class="fragment">Once again, keep watch for opportunities!
+            <p>
+              <table>
+                <tbody>
+                  <tr>
+                    <td class="fragment" style="text-align: center;" >
+                      <div>
+                        <img src="img/nosql-databases.jpg" alt="nosql-db" style="height: 250px;">
+                      </div>
+                      <div>NoSql</div>
+                    </td>
+                    <td class="fragment" style="text-align: center;">
+                      <div>
+                        <img src="img/no-db.png" alt="no-db" style="height: 250px;">
+                      </div>
+                      <div>NoDB!</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </p>
+            </section>
 
           <section id="rights">
             <p><small><em>Lilo & Stitch</em> copyrights belong to Walt Disney Pictures</small></p>
