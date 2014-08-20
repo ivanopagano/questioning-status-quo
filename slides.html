@@ -15,6 +15,11 @@
     text-align: center;
   }
 
+  dl dt,
+  dl dd {
+    text-align: left !important;
+  }
+
   code[data-trim].small {
     font-size: 10pt;
   }
@@ -57,14 +62,12 @@
     text-shadow: -3px -3px 13px #FF532B !important;
   }
 
-  #dev-in-decade {
+  #dev-in-decade,
+  #back-from-future-conclusion {
     -webkit-transform: translate(0px, -6ex);
   }
 
-  #back-from-future h1,
-  #back-from-future h2,
-  #back-from-future h3,
-  #back-from-future h4 {
+  #back-from-future h1 {
     background-color: rgba(255, 255, 255, .4);
     border: thin black solid;
     border-radius: 10px;
@@ -714,7 +717,7 @@ lazy val root = (project in file(".")).enablePlugins(play.PlayJava)
             <h3>About the "learning curve"</h3>
             <p><em>Rich Hickey</em> (clojure, datomic) made interesting remarks about the different meaning of</p>
             <p><span class="fragment highlight-green">simple</span> and <span class="fragment highlight-red">easy</span></p>
-            <p><small>presentation available here <a href="http://www.infoq.com/presentations/Simple-Made-Easy-QCon-London-2012">http://www.infoq.com/presentations/Simple-Made-Easy-QCon-London-2012</a></small></p>
+            <p><small>presentation available here <a href="http://www.infoq.com/presentations/Simple-Made-Easy-QCon-London-2012">www.infoq.com/presentations/Simple-Made-Easy-QCon-London-2012</a></small></p>
           </section>
 
           <section id="hammock">
@@ -850,7 +853,7 @@ def version2(queued: Iterable[Person]): Iterable[Person] = {
             </blockquote>
             <p class="fragment spaced">Edsger W. Dijkstra - Letter to the budget council of The University of Texas at Austin</p>
             <p class="fragment"><small>the whole letter is here <a href="http://www.cs.utexas.edu/users/EWD/OtherDocs/To%20the%20Budget%20Council%20concerning%20Haskell.pdf">
-              http://www.cs.utexas.edu/users/EWD/OtherDocs/To%20the%20Budget%20Council%20concerning%20Haskell.pdf</a></small>
+              www.cs.utexas.edu/users/EWD/OtherDocs/To%20the%20Budget%20Council%20concerning%20Haskell.pdf</a></small>
             </p>
           </section>
 
@@ -975,9 +978,9 @@ def version2(queued: Iterable[Person]): Iterable[Person] = {
           <section id="raible">
             <h3>Have a look at <a href="http://raibledesigns.com/">Matt Raible</a>'s <strong>devoxx '13 presentation</strong> to get some inspiration regarding modern web development technologies</h3>
             <p>here is the video</p>
-            <p><small><a href="http://www.parleys.com/play/5298cbe3e4b039ad2298c9db/">http://www.parleys.com/play/5298cbe3e4b039ad2298c9db/</a></small></p>
+            <p><small><a href="http://www.parleys.com/play/5298cbe3e4b039ad2298c9db/">www.parleys.com/play/5298cbe3e4b039ad2298c9db/</a></small></p>
             <p>and here the slides </p>
-            <p><small><a href="http://static.raibledesigns.com/repository/presentations/The_Modern_Java_Web_Developer_Bootcamp_Devoxx2013.pdf">http://static.raibledesigns.com/repository/presentations/The_Modern_Java_Web_Developer_Bootcamp_Devoxx2013.pdf</a></small></p>
+            <p><small><a href="http://static.raibledesigns.com/repository/presentations/The_Modern_Java_Web_Developer_Bootcamp_Devoxx2013.pdf">static.raibledesigns.com/repository/presentations/The_Modern_Java_Web_Developer_Bootcamp_Devoxx2013.pdf</a></small></p>
             <p><small>[beware! heavy pdf]</small></p>
           </section>
 
@@ -1023,17 +1026,17 @@ def version2(queued: Iterable[Person]): Iterable[Person] = {
             </p>
             <p class="fragment glow">M.Odersky; M.Zenger - <strong>Scalable Component Abstractions</strong><br>
             <small>
-              <a href="http://lampwww.epfl.ch/~odersky/papers/ScalableComponent.pdf">http://lampwww.epfl.ch/~odersky/papers/ScalableComponent.pdf</a>
+              <a href="http://lampwww.epfl.ch/~odersky/papers/ScalableComponent.pdf">lampwww.epfl.ch/~odersky/papers/ScalableComponent.pdf</a>
             </small>
             </p>
             <p class="fragment glow">J.Hughes - <strong>Why Functional Programming Matters</strong><br>
             <small>
-              <a href="http://www.cse.chalmers.se/~rjmh/Papers/whyfp.html">http://www.cse.chalmers.se/~rjmh/Papers/whyfp.html</a>
+              <a href="http://www.cse.chalmers.se/~rjmh/Papers/whyfp.html">www.cse.chalmers.se/~rjmh/Papers/whyfp.html</a>
             </small>
             </p>
             <p class="fragment glow">H.Abelson; G.J.Sussman - <strong>Structure and Interpretation of Computer Programs</strong><br>
             <small>
-              <a href="http://mitpress.mit.edu/sicp/">http://mitpress.mit.edu/sicp/</a>
+              <a href="http://mitpress.mit.edu/sicp/">mitpress.mit.edu/sicp/</a>
             </small>
             </p>
           </section>
@@ -1050,7 +1053,7 @@ def version2(queued: Iterable[Person]): Iterable[Person] = {
             <h3>Impedance Mismatch (detour)</h3>
             <p>Object Relational Mapping has been called <q>&ldquo;The Vietnam of Computer Science&rdquo;</q></p>
             <img src="img/vietnam.jpg" alt="vietnam">
-            <small>Ted Neward in <a href="http://blogs.tedneward.com/2006/06/26/The+Vietnam+Of+Computer+Science.aspx">http://blogs.tedneward.com/2006/06/26/The+Vietnam+Of+Computer+Science.aspx</a></small>
+            <small>Ted Neward in <a href="http://blogs.tedneward.com/2006/06/26/The+Vietnam+Of+Computer+Science.aspx">blogs.tedneward.com/2006/06/26/The+Vietnam+Of+Computer+Science.aspx</a></small>
           </section>
           <section id="nosql-nodb">
             <h3>Is Relational Database always the best choice?</h3>
@@ -1118,11 +1121,11 @@ def version2(queued: Iterable[Person]): Iterable[Person] = {
               <section id="granger">
                 <h4>As <code>Light Table</code> came out, Granger made some research to figure out what's wrong in programming, and what kind of solutions he could come up with</h4>
                 <h4>His reasoning is better explained on his blog</h4>
-                <p><a href="http://www.chris-granger.com/2014/03/27/toward-a-better-programming/">http://www.chris-granger.com/2014/03/27/toward-a-better-programming/</a></p>
+                <p><a href="http://www.chris-granger.com/2014/03/27/toward-a-better-programming/">www.chris-granger.com/2014/03/27/toward-a-better-programming/</a></p>
                 <h4>He shows the progress of a new project called <a href="http://www.chris-granger.com/2014/03/27/toward-a-better-programming/">Aurora</a></h4>
                 <div class="fragment">
                   <h4>Similar ideas can be found on this blog entry about <code>Legible Mathematics</code></h4>
-                  <p><a href="http://glench.com/LegibleMathematics/">http://glench.com/LegibleMathematics/</a></p>
+                  <p><a href="http://glench.com/LegibleMathematics/">glench.com/LegibleMathematics/</a></p>
                 </div>
               </section>
               <section id="wolfram">
@@ -1154,9 +1157,9 @@ def version2(queued: Iterable[Person]): Iterable[Person] = {
               <p>His area of interest is the future of computing, education, data visualization and manipulation</p>
               <div class="fragment">
                 <h4 class="spaced">Suggested material includes</h4>
-                <p>The future of programming: <br><a href="http://worrydream.com/#!/TheFutureOfProgramming">http://worrydream.com/#!/TheFutureOfProgramming</a></p>
-                <p>Inventing on principle: <br><a href="http://worrydream.com/#!/InventingOnPrinciple">http://worrydream.com/#!/InventingOnPrinciple</a></p>
-                <p>Magic Ink: <br><a href="http://worrydream.com/#!/MagicInk">http://worrydream.com/#!/MagicInk</a></p>
+                <p>The future of programming: <br><a href="http://worrydream.com/#!/TheFutureOfProgramming">worrydream.com/#!/TheFutureOfProgramming</a></p>
+                <p>Inventing on principle: <br><a href="http://worrydream.com/#!/InventingOnPrinciple">worrydream.com/#!/InventingOnPrinciple</a></p>
+                <p>Magic Ink: <br><a href="http://worrydream.com/#!/MagicInk">worrydream.com/#!/MagicInk</a></p>
               </div>
             </section>
             <section id="influences">
@@ -1212,10 +1215,70 @@ def version2(queued: Iterable[Person]): Iterable[Person] = {
                 <h1 class="glow back-future">Back from the Future</h1>
               </section>
               <section id="back-from-future-apps">
+                <h3>Future of: <strong>applications</strong></h3>
+                <dl>
+                  <dt><strong>Sep 2013</strong></dt>
+                  <dd>the reactive manifesto - <a href="http://www.reactivemanifesto.org">www.reactivemanifesto.org</a></dd>
+                  <div class="fragment">
+                    <dt><strong>Feb 2009</strong> (first public commit)</dt>
+                    <dd>support by the <em>akka</em> framework - <a href="http://www.akka.io">www.akka.io</a></dd>
+                  </div>
+                  <div class="fragment">
+                    <dt><strong>1990</strong> (first presentation)</dt>
+                    <dd>inspired by <em>erlang</em> language - <a href="http://www.erlang.org">www.erlang.org</a></dd>
+                  </div>
+                  <div class="fragment">
+                    <dt><strong>1973</strong></dt>
+                    <dd>based on the <em>actor model</em> from Carl Hewitt - Hewitt; Bishop; Steiger; <em>&ldquo;A Universal Modular Actor Formalism for Artificial Intelligence. IJCAI&rdquo;</em></dd>
+                  </div>
+                </dl>
               </section>
               <section id="back-from-future-design">
+                <h3>Future of: <strong>software design</strong></h3>
+                <dl>
+                  <dt><strong>2012</strong> (reprinted)</dt>
+                  <dd>Uncle Bob Martin quotes an article about software design from Jack W. Reeves in his book on <em>&ldquo;Agile Software Development, principles, patterns and practices&rdquo;</em></dd>
+                  <div class="fragment">
+                    <dt><strong>1985</strong></dt>
+                    <dd>the author published a reply to said article, after 13 years of reviews and comments - <em>&ldquo;What is software design: 13 years later&rdquo;</em></dd>
+                  </div>
+                  <div class="fragment">
+                    <dt><strong>1972</strong></dt>
+                    <dd>the original article - <em>&ldquo;What is software design?&rdquo;</em></dd>
+                  </div>
+                  <div class="fragment">
+                    <dt><strong>1962</strong></dt>
+                    <dd>the idea supported in the article, that <em>&ldquo;the code, as written by the developer, is the actual application design&rdquo;</em>, had been already clear to Reeves for 10 years</dd>
+                  </div>
+                </dl>
               </section>
               <section id="back-from-future-data">
+                <h3>Future of: <strong>data modeling</strong></h3>
+                <h4>The late William Kent's book <em>&ldquo;Data &amp; Reality&rdquo;</em></h4>
+                <dl>
+                  <div class="fragment">
+                    <dt><strong>2012</strong> (3rd ed.)</dt>
+                    <dd>updated and commented by Steve Hobermann</dd>
+                  </div>
+                  <div class="fragment">
+                    <dt><strong>2000</strong> (2nd ed.)</dt>
+                    <dd>reprinted practically unchanged from the original edition</dd>
+                  </div>
+                  <div class="fragment">
+                    <dt><strong>1978</strong> (1st ed.)</dt>
+                  </div>
+                  <div class="fragment">
+                    <dt><strong>1967</strong> - a sentence, quoted in the book preface</dt>
+                    <dd><q>&ldquo;We do not, it seems, have a very clear and commonly agreed upon set of notions about data - either what they are, how they should be fed and cared for, or their relation to the design of programming languages and operating systems&rdquo;</q> [Mealy]</dd>
+                  </div>
+                  <div class="fragment">
+                    <dd>Both Kent, in the first edition, and Hobermann, in the most recent, confirm the validity of this sentence from 1967 at the time of writing!</dd>
+                  </div>
+                </dl>
+              </section>
+              <section id="back-from-future-conclusion" data-background="img/plants_macro_sprouts_1920x1200_27173.jpg">
+                <p>I hope innovation comes from the same open-minded approach of those past years, when the future of computing was still largely unwritten</p>
+                <h3>Leaving back some unneeded baggage could make creativity sprout</h3>
               </section>
             </section>
             <section id="rights">
