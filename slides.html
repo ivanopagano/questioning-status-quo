@@ -61,6 +61,16 @@
     -webkit-transform: translate(0px, -6ex);
   }
 
+  #back-from-future h1,
+  #back-from-future h2,
+  #back-from-future h3,
+  #back-from-future h4 {
+    background-color: rgba(255, 255, 255, .4);
+    border: thin black solid;
+    border-radius: 10px;
+    box-shadow: 2px 2px 3px 3px rgba(0, 0, 0, .5);
+  }
+
   </style>
 
   <!-- If the query includes 'print-pdf', include the PDF print sheet -->
@@ -1194,11 +1204,25 @@ def version2(queued: Iterable[Person]): Iterable[Person] = {
               </section>
               <section id="past-young">
                 <h3>Though the information age is all around us now, the history of software and computers is still very young</h3>
+                <h2 class="fragment roll-in">To look forward we also need to look back</h2>
+              </section>
+            </section>
+            <section id="back-from-future">
+              <section id="back-from-future-title" data-background="img/back-to-the-future.jpg">
+                <h1 class="glow back-future">Back from the Future</h1>
+              </section>
+              <section id="back-from-future-apps">
+              </section>
+              <section id="back-from-future-design">
+              </section>
+              <section id="back-from-future-data">
               </section>
             </section>
             <section id="rights">
               <p><small><em>Lilo & Stitch</em> copyrights belong to Walt Disney Pictures</small></p>
               <p><small><em>The Wolfram Language logo</em> copyrights belong to Wolfram Research Inc.</small></p>
+              <p><small><em>Back to the future</em> copyrights belong to Universal Studios</small></p>
+              <p><small><em>The Matrix</em> copyrights belong to Warner Bros. Entertainment Inc.</small></p>
             </section>
       </div>
 
