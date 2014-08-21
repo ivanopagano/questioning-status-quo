@@ -67,6 +67,12 @@
     -webkit-transform: translate(0px, -6ex);
   }
 
+  #oo-fp h2,
+  #oo-fp h3,
+  #oo-fp h4 {
+    -webkit-transform: translate(0px, -30px);
+  }
+
   #enterprise-code .javaee {
     height: 160px;
     -webkit-transform: translate(-4ex, 3ex) rotate(-6deg);
@@ -723,9 +729,9 @@ lazy val root = (project in file(".")).enablePlugins(play.PlayJava)
 
           <section id="sowhat">
             <h3>What am I trying to say?</h3>
-            <p class="fragment">I can get lost in technicalities</p>
+            <p class="fragment">It's too easy to get lost in cluttered technicalities</p>
             <p class="fragment">Complex environments can blur the overall picture</p>
-            <p class="fragment">Every so often I should critically look at the tools I use</p>
+            <p class="fragment">Every so often it's good to critically examine the tools we use</p>
             <p class="fragment">Moreso if they result from some predetermined policy</p>
             <p class="fragment">Find some time to explore new opportunities, they don't always pay back, but sometimes they do</p>
             <p class="fragment">Don't be scared by the learning curve, you've been there already!</p>
@@ -996,21 +1002,22 @@ def version2(queued: Iterable[Person]): Iterable[Person] = {
           </section>
 
           <section id="raible">
-            <h3>Have a look at <a href="http://raibledesigns.com/" target="_blank">Matt Raible</a>'s <strong>devoxx '13 presentation</strong> to get some inspiration regarding modern web development technologies</h3>
+            <p>Have a look at</p>
+            <h3><a href="http://raibledesigns.com/" target="_blank">Matt Raible</a>'s <br><strong>devoxx '13 presentation</strong></h3>
+            <p>to get some inspiration regarding modern web development technologies</p>
             <p>here is the video</p>
             <p><small><a href="http://www.parleys.com/play/5298cbe3e4b039ad2298c9db/" target="_blank">www.parleys.com/play/5298cbe3e4b039ad2298c9db/</a></small></p>
             <p>and here the slides </p>
             <p><small><a href="http://static.raibledesigns.com/repository/presentations/The_Modern_Java_Web_Developer_Bootcamp_Devoxx2013.pdf" target="_blank">static.raibledesigns.com/repository/presentations/The_Modern_Java_Web_Developer_Bootcamp_Devoxx2013.pdf</a></small></p>
             <p><small>[beware! heavy pdf]</small></p>
           </section>
-
           <section id="raise-level">
             <h3>Time to take off and fly a little higher</h3>
             <img src="img/neo-lookup.jpg" alt="neo-lookup" style="width: 70%;">
           </section>
           <section id="oo-fp">
-            <h2 style="-webkit-transform: translate(0px, -30px);">the Object-Oriented vs. Functional debate</h2>
-            <h4 style="-webkit-transform: translate(0px, -30px);">Even though it's hard to define both, we can try to identify some core features of each</h4>
+            <h2>the Object-Oriented vs. Functional debate</h2>
+            <p>Even though it's hard to define both, we can try to identify some core features of each</p>
             <table>
               <thead>
                 <tr>
@@ -1063,17 +1070,19 @@ def version2(queued: Iterable[Person]): Iterable[Person] = {
           <section id="oo-fp-mismatch">
             <h2>Impedance Mismatch</h2>
             <ul>
-              <li><h4><code>OOP</code> attaches behaviour to data</h4></li>
-              <li><h4><code>FP</code> separates functions from data</h4></li>
-            </ul>
+              <li><p><code>OOP</code> attaches behaviour to data</p></li>
+              <li><p><code>FP</code> separates functions from data</p></li>
+            </ul><br>
             <img src="img/square-round.jpg" alt="square-round">
             <p class="fragment roll-in">Interestingly, the FP approach to data is considered an <br><a href="http://www.martinfowler.com/bliki/AnemicDomainModel.html" target="_blank">anti-pattern</a> in <code>OOP</code></p>
           </section>
           <section id="oo-orm-mismatch">
             <h3>Impedance Mismatch (detour)</h3>
-            <p>Object Relational Mapping has been called <q>&ldquo;The Vietnam of Computer Science&rdquo;</q></p>
+            <p>Object Relational Mapping has been called<br>
+              <q>&ldquo;The Vietnam of Computer Science&rdquo;</q>
+            </p>
             <img src="img/vietnam.jpg" alt="vietnam">
-            <small>Ted Neward cited in <a href="http://blog.codinghorror.com/object-relational-mapping-is-the-vietnam-of-computer-science/" target="_blank">
+            <small>Ted Neward cited in <br><a href="http://blog.codinghorror.com/object-relational-mapping-is-the-vietnam-of-computer-science/" target="_blank">
               blog.codinghorror.com/object-relational-mapping-is-the-vietnam-of-computer-science/
             </a></small>
           </section>
@@ -1141,13 +1150,15 @@ def version2(queued: Iterable[Person]): Iterable[Person] = {
                 </ul>
               </section>
               <section id="granger">
-                <h4>As <code>Light Table</code> came out, Granger made some research to figure out what's wrong in programming, and what kind of solutions he could come up with</h4>
-                <h4>His reasoning is better explained on his blog</h4>
-                <p><a href="http://www.chris-granger.com/2014/03/27/toward-a-better-programming/" target="_blank">www.chris-granger.com/2014/03/27/toward-a-better-programming/</a></p>
-                <h4>He shows the progress of a new project called <a href="https://www.youtube.com/watch?v=L6iUm_Cqx2s" target="_blank">Aurora</a></h4>
+                <p>As <code>Light Table</code> came out, Granger made some research to figure out 
+                  <q>&ldquo;what's wrong in programming&rdquo;</q>, and what kind of solutions he could come up with
+                </p>
+                <p>His reasoning is better explained on his blog</p>
+                <p><small><a href="http://www.chris-granger.com/2014/03/27/toward-a-better-programming/" target="_blank">www.chris-granger.com/2014/03/27/toward-a-better-programming/</a></small></p>
+                <p>where he shows the progress of a new project called <a href="https://www.youtube.com/watch?v=L6iUm_Cqx2s" target="_blank">Aurora</a></p>
                 <div class="fragment">
-                  <h4>Similar ideas can be found on this blog entry about <code>Legible Mathematics</code></h4>
-                  <p><a href="http://glench.com/LegibleMathematics/" target="_blank">glench.com/LegibleMathematics/</a></p>
+                  <p>Similar ideas can be found on this blog entry about <code>Legible Mathematics</code></p>
+                  <p><small><a href="http://glench.com/LegibleMathematics/" target="_blank">glench.com/LegibleMathematics/</a></small></p>
                 </div>
               </section>
               <section id="wolfram">
@@ -1169,12 +1180,12 @@ def version2(queued: Iterable[Person]): Iterable[Person] = {
               <ul>
                 <li class="fragment">stopped thinking about what we already know about software development</li>
                 <li class="fragment">and asked what we can actually do with the technology at our disposal</li>
-                <li class="fragment">can we stop taking for granted the way we develop and focus on how 
-                  <span class="fragment highlight-green">we would like</span> to develop?</li>
+                <li class="fragment">can we stop taking for granted <span class="fragment highlight-red">the way we develop</span>
+                 and focus on how <span class="fragment highlight-green">we would like</span> to develop?</li>
               </ul>
             </section>
             <section id="victor">
-              <h4>most of the ideas just shown were inspired by the creativity of this young talented guy</h4>
+              <p>Most of the ideas we just saw were inspired by the creativity of this young talented guy</p>
               <h3>Bret Victor</h3>
               <p>His area of interest is the future of computing, education, data visualization and manipulation</p>
               <div class="fragment">
@@ -1188,7 +1199,7 @@ def version2(queued: Iterable[Person]): Iterable[Person] = {
               <h2>Influences</h2>
               <p>It strikes me how often Victor cites works and "explorers" from the historical or contemporary computer science research and other fields</p>
               <div class="fragment">
-                <h4>Names such as</h4>
+                <h4 class="spaced">Names such as</h4>
                 <ul>
                   <li class="fragment highlight-current-blue"><a href="http://en.wikipedia.org/wiki/Alan_Kay" target="_blank">Alan Kay</a></li>
                   <li class="fragment highlight-current-blue"><a href="http://en.wikipedia.org/wiki/Engelbart" target="_blank">Douglas Engelbart</a></li>
@@ -1204,18 +1215,18 @@ def version2(queued: Iterable[Person]): Iterable[Person] = {
             </section>
             <section id="past">
               <section id="past-people">
-                <h4>Many of these influencial people's stunning innovations, date back to the early days of the computer age</h4>
+                <p>Many of these influencial people's stunning innovations, date back to the early days of the computer age</p>
                 <img src="img/hardvard-mark1.jpg" alt="hardvard-mark1" width="350px">
                 <h2 class="fragment roll-in">The point here is <br><strong>How much can we learn from the past?</strong></h2>
               </section>
               <section id="past-future">
                 <img src="img/lilo-stich-thinking.jpg" alt="thinking">
                 <blockquote>&ldquo;I have this strong feeling that the most I look into the advanced approaches or hard problems in today's software, the most I find myself looking back&rdquo;</blockquote>
-                <p>- myself</p>
+                <h5>just me</h5>
               </section>
               <section id="past-old">
-                <h3>Whenever we discover new cool approaches and ideas about computer science,
-                 they're probably inspired by past research, tackling the same old fundamental issues</h3>
+                <h4>Whenever we discover new cool approaches and ideas about computer science,
+                 they're probably inspired by past research, tackling the same old fundamental issues</h4>
                 <ul>
                   <li class="fragment">design patterns</li>
                   <li class="fragment">&lambda;-calculus</li>
@@ -1270,10 +1281,11 @@ def version2(queued: Iterable[Person]): Iterable[Person] = {
                   </div>
                   <div class="fragment">
                     <dt><strong>1962</strong></dt>
-                    <dd>the idea supported in the article, that <em>&ldquo;the code, as written by the developer, is the actual application design&rdquo;</em>, had been already clear to Reeves for 10 years</dd>
-                    <a href="http://www.developerdotstar.com/mag/articles/reeves_design_main.html" target="_blank">
+                    <dd>the idea supported in the article, that <em>&ldquo;the code, as written by the developer, 
+                      is the actual application design&rdquo;</em>, had been already clear to Reeves for 10 years</dd>
+                    <small class="spaced"><a href="http://www.developerdotstar.com/mag/articles/reeves_design_main.html" target="_blank">
                       www.developerdotstar.com/mag/articles/reeves_design_main.html
-                    </a>
+                    </a></small>
                   </div>
                 </dl>
               </section>
