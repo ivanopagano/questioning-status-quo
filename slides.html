@@ -38,6 +38,16 @@
     margin-bottom: 3ex !important; 
   }
 
+  p.topped,
+  div.topped,
+  h1.topped,
+  h2.topped,
+  h3.topped,
+  h4.topped,
+  h5.topped {
+    margin-top: 20px;
+  }
+
   small.copyright {
     font-size: 8pt;
     color: lightgrey;
@@ -57,37 +67,58 @@
   .candle-font {
     color: #FEFEFC;
     text-align: left;
-    -webkit-transform: translate(0ex, -10ex);
+    transform: translate(0ex, -10ex);
     text-shadow: 3px 3px 13px #F4C05D !important;
     text-shadow: -3px -3px 13px #FF532B !important;
   }
 
+
+  #losing-it h3:nth-child(1) {
+    transform: translate(-10ex) rotate(-6deg);
+  }
+  #losing-it h3:nth-child(2) {
+    transform: translate(12ex) rotate(23deg);
+  }
+  #losing-it h3:nth-child(3) {
+    transform: translate(-10ex) rotate(-4deg);
+  }
+  #losing-it h3:nth-child(4) {
+    transform: translate(5ex, 2ex) rotate(12deg);
+  }
+  #losing-it h3:nth-child(5) {
+    transform: translate(5ex, 2ex) rotate(12deg);
+  }
+  #losing-it h3:nth-child(6) {
+    transform: translate(-5ex, 4ex) rotate(-6deg);
+  }
+
+
   #dev-in-decade,
   #back-from-future-conclusion {
-    -webkit-transform: translate(0px, -6ex);
+    transform: translate(0px, -6ex);
   }
 
   #oo-fp h2,
   #oo-fp h3,
   #oo-fp h4 {
-    -webkit-transform: translate(0px, -30px);
+    transform: translate(0px, -30px);
   }
 
   #enterprise-code .javaee {
     height: 160px;
-    -webkit-transform: translate(-4ex, 3ex) rotate(-6deg);
+    transform: translate(-4ex, 3ex) rotate(-6deg);
     box-shadow: 3px 3px 5px 3px rgba(0, 0, 0, .4);
   }
 
   #enterprise-code .spring {
     height: 160px;
-    -webkit-transform: translate(0ex, 5ex) rotate(3deg);
+    transform: translate(0ex, 5ex) rotate(3deg);
     box-shadow: 3px 3px 5px 3px rgba(0, 0, 0, .4);
   }
 
   #enterprise-code .wildfly {
     height: 160px;
-    -webkit-transform: translate(3ex, 3ex) rotate(5deg);
+    transform: translate(3ex, 3ex) rotate(5deg);
     box-shadow: 3px 3px 5px 3px rgba(0, 0, 0, .4);
   }
 
@@ -206,12 +237,12 @@
           </section>
 
           <section id="losing-it">
-            <h3 class="fragment" style="-webkit-transform: translate(-10ex) rotate(-6deg);">a daily routine</h3>
-            <h3 class="fragment" style="-webkit-transform: translate(12ex) rotate(23deg);">messy enterprisey code</h3>
-            <h3 class="fragment" style="-webkit-transform: translate(-10ex) rotate(-4deg);">bugs, code smells, over-complexity, imperfections</h3>
-            <h3 class="fragment" style="-webkit-transform: translate(5ex, 2ex) rotate(12deg);">sophisticated solutions to problems...</h3>
-            <h3 class="fragment" style="-webkit-transform: translate(5ex, 2ex) rotate(12deg);">... needed to solve the industry needs</h3>
-            <h3 class="fragment" style="-webkit-transform: translate(-5ex, 4ex) rotate(-6deg);">like faster time to market and tight delivery schedules</h3>
+            <h3 class="fragment">a daily routine</h3>
+            <h3 class="fragment">messy enterprisey code</h3>
+            <h3 class="fragment">bugs, code smells, over-complexity, imperfections</h3>
+            <h3 class="fragment">sophisticated solutions to problems...</h3>
+            <h3 class="fragment">... needed to solve the industry needs</h3>
+            <h3 class="fragment">like faster time to market and tight delivery schedules</h3>
           </section>
 
           <section id="agile">
@@ -1040,7 +1071,7 @@ def version2(queued: Iterable[Person]): Iterable[Person] = {
                 </tr>
               </tbody>
             </table>
-            <p  style="-webkit-transform: translate(0px, 20px);" class="fragment roll-in"  data-fragment-index="6">
+            <p class="topped fragment roll-in" data-fragment-index="6">
               both approaches have <em>reusability</em> and <em>simplicity</em> as goals
             </p>
           </section>
@@ -1199,7 +1230,7 @@ def version2(queued: Iterable[Person]): Iterable[Person] = {
               <h2>Influences</h2>
               <p>It strikes me how often Victor cites works and "explorers" from the historical or contemporary computer science research and other fields</p>
               <div class="fragment">
-                <h4 class="spaced">Names such as</h4>
+                <h4 class="topped">Names such as</h4>
                 <ul>
                   <li class="fragment highlight-current-blue"><a href="http://en.wikipedia.org/wiki/Alan_Kay" target="_blank">Alan Kay</a></li>
                   <li class="fragment highlight-current-blue"><a href="http://en.wikipedia.org/wiki/Engelbart" target="_blank">Douglas Engelbart</a></li>
@@ -1222,7 +1253,7 @@ def version2(queued: Iterable[Person]): Iterable[Person] = {
               <section id="past-future">
                 <img src="img/lilo-stich-thinking.jpg" alt="thinking">
                 <blockquote>&ldquo;I have this strong feeling that the most I look into the advanced approaches or hard problems in today's software, the most I find myself looking back&rdquo;</blockquote>
-                <h5>just me</h5>
+                <h5 class="topped">just me</h5>
               </section>
               <section id="past-old">
                 <h4>Whenever we discover new cool approaches and ideas about computer science,
@@ -1283,9 +1314,9 @@ def version2(queued: Iterable[Person]): Iterable[Person] = {
                     <dt><strong>1962</strong></dt>
                     <dd>the idea supported in the article, that <em>&ldquo;the code, as written by the developer, 
                       is the actual application design&rdquo;</em>, had been already clear to Reeves for 10 years</dd>
-                    <small class="spaced"><a href="http://www.developerdotstar.com/mag/articles/reeves_design_main.html" target="_blank">
+                    <p class="topped"><small><a href="http://www.developerdotstar.com/mag/articles/reeves_design_main.html" target="_blank">
                       www.developerdotstar.com/mag/articles/reeves_design_main.html
-                    </a></small>
+                    </a></small></p>
                   </div>
                 </dl>
               </section>
@@ -1308,7 +1339,7 @@ def version2(queued: Iterable[Person]): Iterable[Person] = {
                     <dt><strong>1967</strong> - a sentence, quoted in the book preface</dt>
                     <dd><q>&ldquo;We do not, it seems, have a very clear and commonly agreed upon set of notions about data - either what they are, how they should be fed and cared for, or their relation to the design of programming languages and operating systems&rdquo;</q> [Mealy]</dd>
                   </div>
-                  <div class="fragment">
+                  <div class="topped fragment">
                     <dd>Both Kent, in the first edition, and Hobermann, in the most recent, confirm the validity of this sentence from 1967 at the time of writing!</dd>
                   </div>
                 </dl>
@@ -1333,13 +1364,13 @@ def version2(queued: Iterable[Person]): Iterable[Person] = {
               </p>
             </section>
             <section id="rights">
-              <h2>copyrights notice</h2>
-              <p><small><em>Lilo & Stitch</em> copyrights belong to Walt Disney Pictures</small></p>
-              <p><small><em>The Wolfram Language logo</em> copyrights belong to Wolfram Research Inc.</small></p>
-              <p><small><em>Back to the future</em> copyrights belong to Universal Studios</small></p>
-              <p><small><em>The Matrix</em> copyrights belong to Warner Bros. Entertainment Inc.</small></p>
+              <h3>copyrights notice</h3>
+              <div><small><em>Lilo & Stitch</em> copyrights belong to Walt Disney Pictures</small></div>
+              <div><small><em>The Wolfram Language logo</em> copyrights belong to Wolfram Research Inc.</small></div>
+              <div><small><em>Back to the future</em> copyrights belong to Universal Studios</small></div>
+              <div><small><em>The Matrix</em> copyrights belong to Warner Bros. Entertainment Inc.</small></div>
             </section>
-      </div>
+        </div>
 
       </div>
       <script src="lib/js/head.min.js"></script>
