@@ -145,6 +145,10 @@
     box-shadow: 2px 2px 3px 3px rgba(0, 0, 0, .5);
   }
 
+  #past-old li span {
+    font-variant: small-caps;
+  }
+
   </style>
 
   <!-- If the query includes 'print-pdf', include the PDF print sheet -->
@@ -1272,17 +1276,17 @@ def version2(queued: Iterable[Person]): Iterable[Person] = {
                 <h5 class="topped">just me</h5>
               </section>
               <section id="past-old">
-                <h4>Whenever we discover new cool approaches and ideas about computer science,
-                 they're probably inspired by past research, tackling the same old fundamental issues</h4>
+                <p>Whenever we discover new cool approaches and ideas about computer science,
+                 they're probably inspired by past research, tackling the same old fundamental issues</p>
                 <ul>
-                  <li class="fragment">design patterns</li>
-                  <li class="fragment">&lambda;-calculus</li>
-                  <li class="fragment">type systems</li>
-                  <li class="fragment">data representation</li>
-                  <li class="fragment">big data</li>
-                  <li class="fragment">distributed systems</li>
-                  <li class="fragment">actors</li>
-                  <li class="fragment">reactive programming</li>
+                  <li class="fragment"><span>design patterns</span></li>
+                  <li class="fragment">&lambda;<span>-calculus</span></li>
+                  <li class="fragment"><span>type systems</span></li>
+                  <li class="fragment"><span>data representation</span></li>
+                  <li class="fragment"><span>big data</span></li>
+                  <li class="fragment"><span>distributed systems</span></li>
+                  <li class="fragment"><span>actors</span></li>
+                  <li class="fragment"><span>reactive programming</span></li>
                 </ul>
               </section>
               <section id="past-young">
