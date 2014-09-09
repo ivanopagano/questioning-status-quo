@@ -1474,6 +1474,11 @@ def version2(queued: Iterable[Person]): Iterable[Person] = {
         theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
         transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
 
+        // leap: {
+        //   pointerColor: '#D80000',
+        //   pointerOpacity: 0.5
+        // },
+
         // Parallax scrolling
         // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
         // parallaxBackgroundSize: '2100px 900px',
@@ -1486,6 +1491,7 @@ def version2(queued: Iterable[Person]): Iterable[Person] = {
         { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
         { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
         { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+        // ,{ src: 'plugin/leap/leap.js', async: true }
         ]
       });
 
